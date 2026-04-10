@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+<meta charset="UTF-8">
+<meta name="description" content="Garagen-Finanzierungsrechner: Berechne monatliche Rate, Gesamtkosten und ob sich ein Kredit für dein Investment lohnt.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="GarageInvest">
+<link rel="canonical" href="https://garageinvest.netlify.app/finanzierungsrechner.html">
+<meta property="og:title" content="Garagen Finanzierungsrechner – Lohnt sich ein Kredit? | GarageInvest">
+<meta property="og:description" content="Berechne monatliche Rate, Gesamtkosten und ob sich ein Kredit für dein Garagen-Investment lohnt.">
+<meta property="og:site_name" content="GarageInvest">
+<meta name="twitter:card" content="summary">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garagen Finanzierungsrechner – Lohnt sich ein Kredit? | GarageInvest</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f9f8f6; --bg2: #f0eeea;
+  --surface: #ffffff; --surface2: #f5f4f1;
+  --border: #e2ddd6; --border2: #ccc8bf;
+  --navy: #0f2444; --navy-dim: #1a3a6e;
+  --navy-faint: rgba(15,36,68,0.06); --navy-mid: rgba(15,36,68,0.12);
+  --accent: #16a34a; --accent-dim: #15803d;
+  --red: #dc2626; --amber: #d97706;
+  --text: #1a1814; --text-muted: #5c564e; --text-dim: #9b9590;
+  --gold: #0f2444; --gold-dim: #1a3a6e; --gold-faint: rgba(15,36,68,0.06);
+  --green: #16a34a; --radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: "Plus Jakarta Sans", sans-serif; overflow-x: hidden; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(249,248,246,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+nav { position: fixed; }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-icon { width: 32px; height: 32px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 900; color: #fff; font-family: "Fraunces", serif; }
+.nav-logo-text { font-family: "Fraunces", serif; font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+.nav-logo-text span { color: var(--navy); }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+.nav-links a:hover { color: var(--text); background: var(--navy-faint); }
+.nav-cta { background: var(--navy) !important; color: #fff !important; font-weight: 600 !important; }
+.nav-cta:hover { background: var(--navy-dim) !important; }
+
+
+
+
+@media (max-width: 680px) { nav { padding: 0 16px; } .nav-links { display: none; } }
+
+
+
+
+
+
+
+
+
+
+.sidebar-close:hover { background: var(--navy-faint); color: var(--navy); border-color: var(--navy); }
+
+
+
+
+
+
+
+
+
+
+.sidebar-cta:hover { background: var(--navy-dim); }
+.page-wrap { max-width: 900px; margin: 0 auto; padding: 96px 32px 80px; }
+@media (max-width: 680px) { .page-wrap { padding: 88px 16px 60px; } }
+.page-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+.page-tag { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy); margin-bottom: 12px; }
+h1 { font-family: "Fraunces", serif; font-size: clamp(32px, 5vw, 48px); font-weight: 900; line-height: 1.08; letter-spacing: -1.5px; margin-bottom: 12px; }
+h1 em { font-style: italic; color: var(--navy); }
+.page-desc { font-size: 16px; color: var(--text-muted); font-weight: 300; line-height: 1.7; }
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+@media (max-width: 680px) { .calc-grid { grid-template-columns: 1fr; } }
+.calc-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); }
+.panel-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); margin-bottom: 20px; }
+.field { margin-bottom: 18px; }
+.field:last-child { margin-bottom: 0; }
+.field label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.field-hint { font-size: 11px; color: var(--text-dim); margin-top: 3px; }
+input[type="number"] { width: 100%; padding: 10px 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; font-size: 15px; font-weight: 500; color: var(--text); font-family: "Plus Jakarta Sans", sans-serif; outline: none; transition: border-color 0.2s; }
+input[type="number"]:focus { border-color: var(--navy); background: var(--surface); }
+.slider-wrap { display: flex; flex-direction: column; gap: 6px; }
+.slider-header { display: flex; justify-content: space-between; align-items: center; }
+.slider-val { font-size: 15px; font-weight: 700; color: var(--navy); }
+input[type="range"] { width: 100%; height: 4px; accent-color: var(--navy); cursor: pointer; }
+.results-panel { background: var(--navy); border-radius: var(--radius); padding: 32px; color: #fff; box-shadow: var(--shadow); margin-bottom: 24px; }
+.results-title { font-family: "Fraunces", serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 24px; opacity: 0.9; }
+.metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+@media (max-width: 560px) { .metrics-grid { grid-template-columns: 1fr 1fr; } }
+.metric { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 16px; text-align: center; }
+.metric-label { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+.metric-value { font-family: "Fraunces", serif; font-size: 26px; font-weight: 700; color: #fff; }
+.metric-value.good { color: #4ade80; }
+.metric-value.bad { color: #f87171; }
+.metric-value.warn { color: #fbbf24; }
+.verdict { border-radius: 10px; padding: 16px 20px; display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+.verdict.good { background: rgba(74,222,128,0.12); border: 1px solid rgba(74,222,128,0.25); color: #bbf7d0; }
+.verdict.ok { background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.2); color: #fde68a; }
+.verdict.bad { background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.2); color: #fecaca; }
+.verdict-icon { font-size: 20px; flex-shrink: 0; }
+.timeline { background: rgba(255,255,255,0.06); border-radius: 10px; padding: 20px; }
+.timeline-title { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.timeline-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.timeline-row:last-child { margin-bottom: 0; }
+.timeline-label { font-size: 12px; color: rgba(255,255,255,0.6); width: 110px; flex-shrink: 0; }
+.timeline-bar-bg { flex: 1; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+.timeline-bar { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
+.bar-tilgung { background: linear-gradient(90deg, #4ade80, #16a34a); }
+.bar-zinsen { background: linear-gradient(90deg, #f87171, #dc2626); }
+.bar-gesamt { background: linear-gradient(90deg, rgba(255,255,255,0.4), rgba(255,255,255,0.7)); }
+.timeline-num { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.8); width: 90px; text-align: right; flex-shrink: 0; }
+.warn-box { background: #fffbeb; border: 1px solid #fde68a; border-left: 3px solid var(--amber); border-radius: 0 10px 10px 0; padding: 18px 22px; margin-bottom: 24px; }
+.warn-box-title { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--amber); margin-bottom: 8px; }
+.warn-box p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin: 0; }
+.link-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; box-shadow: var(--shadow-sm); }
+.link-box-text { font-size: 14px; color: var(--text-muted); }
+.link-box-text strong { color: var(--text); display: block; margin-bottom: 4px; }
+.btn-navy { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: #fff; text-decoration: none; font-weight: 600; font-size: 14px; padding: 11px 20px; border-radius: 10px; transition: background 0.2s; white-space: nowrap; }
+.btn-navy:hover { background: var(--navy-dim); }
+footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(--navy); }
+.footer-inner { max-width: 900px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.5); }
+.footer-links { display: flex; gap: 20px; list-style: none; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.animate { opacity: 0; animation: fadeUp 0.5s ease forwards; }
+
+/* ── ACTIVE NAV + DROPDOWN ── */
+.nav-links a.nav-active { color: var(--navy) !important; background: var(--navy-faint) !important; font-weight: 600 !important; }
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle { display: flex; align-items: center; gap: 5px; color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: color 0.2s, background 0.2s; cursor: pointer; border: none; background: none; font-family: inherit; }
+.nav-dropdown-toggle:hover, .nav-dropdown-toggle.nav-active { color: var(--navy); background: var(--navy-faint); }
+.nav-dropdown-toggle.nav-active { font-weight: 600; }
+.nav-dropdown-arrow { font-size: 10px; transition: transform 0.2s; }
+.nav-dropdown:hover .nav-dropdown-arrow { transform: rotate(180deg); }
+.nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 8px; min-width: 220px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); z-index: 999; }
+.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; text-decoration: none; color: var(--text-muted); font-size: 13.5px; font-weight: 500; border-radius: 8px; transition: all 0.15s; }
+.nav-dropdown-item:hover { color: var(--navy); background: var(--navy-faint); }
+.nav-dropdown-item.nav-active { color: var(--navy); background: var(--navy-faint); font-weight: 600; }
+.nav-dropdown-item-icon { font-size: 16px; }
+.nav-dropdown-item-text { display: flex; flex-direction: column; }
+.nav-dropdown-item-label { font-size: 13px; font-weight: 600; color: inherit; }
+.nav-dropdown-item-sub { font-size: 11px; color: var(--text-dim); margin-top: 1px; }
+
+
+
+
+
+
+
+
+</style>
+
+</head>
+<body>
+
+</div>
+
+</div>
+
+</div>
+<nav>
+  <button onclick="sbOpen()" style="display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:#f5f4f1;border:1px solid #e2ddd6;border-radius:8px;margin-right:4px" aria-label="Menü">
+  <span style="display:block;width:18px;height:2px;background:#5c564e;border-radius:2px"></span>
+  <span style="display:block;width:18px;height:2px;background:#5c564e;border-radius:2px"></span>
+  <span style="display:block;width:18px;height:2px;background:#5c564e;border-radius:2px"></span>
+</button>
+  <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">G</div>
+      <div>
+        <div class="nav-logo-text">Garage<span>Invest</span></div>
+        <div style="font-size:10px;color:var(--text-dim);font-weight:500;letter-spacing:0.3px;margin-top:1px">Immobilien-Kapitalanlage</div>
+      </div>
+    </a>
+  <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:12px;font-weight:600;color:var(--text-muted);letter-spacing:0.5px;white-space:nowrap">🏗️ &nbsp;Deine Immobilien-Kapitalanlage ab 8.000 €</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="nrw.html">Städte</a></li>
+    <li><a href="ratgeber.html">Ratgeber</a></li>
+    <li><a href="angebote.html">Angebote</a></li>
+    <li><a href="ueber-uns.html">Über uns</a></li>
+    <li class="nav-dropdown">
+      <button class="nav-dropdown-toggle">Tools <span class="nav-dropdown-arrow">▾</span></button>
+      <div class="nav-dropdown-menu">
+        <a href="garagen-renditerechner.html" class="nav-dropdown-item">
+          <span class="nav-dropdown-item-icon">🧮</span>
+          <span class="nav-dropdown-item-text">
+            <span class="nav-dropdown-item-label">Renditerechner</span>
+            <span class="nav-dropdown-item-sub">Lohnt sich das Objekt?</span>
+          </span>
+        </a>
+        <a style="color:#0f2444;background:rgba(15,36,68,0.1);font-weight:700;border-radius:8px;padding:6px 12px" href="finanzierungsrechner.html" class="nav-dropdown-item">
+          <span class="nav-dropdown-item-icon">💳</span>
+          <span class="nav-dropdown-item-text">
+            <span class="nav-dropdown-item-label">Finanzierungsrechner</span>
+            <span class="nav-dropdown-item-sub">Lohnt sich ein Kredit?</span>
+          </span>
+        </a>
+      </div>
+    </li>
+    <li><a href="anbieter-vergleich.html">Anbieter</a></li>
+  </ul>
+</nav>
+<div style="height:64px"></div>
+
+<div class="page-wrap">
+  <div class="page-header animate">
+    <div class="page-tag">💳 Kostenloses Tool</div>
+    <h1>Garagen <em>Finanzierungsrechner</em></h1>
+    <p class="page-desc">Berechne deine monatliche Rate, Gesamtzinsen und ob sich ein Kredit für dein Garagen-Investment wirklich lohnt – im direkten Vergleich mit Eigenkapital.</p>
+  </div>
+
+  <div class="calc-grid animate">
+    <div class="calc-panel">
+      <div class="panel-title">🏗️ Objekt & Finanzierung</div>
+      <div class="field">
+        <label>Kaufpreis (€)</label>
+        <input type="number" id="kaufpreis" value="18000" min="1000" max="500000" oninput="calc()">
+      </div>
+      <div class="field">
+        <label>Eigenkapital (€)</label>
+        <input type="number" id="eigenkapital" value="5000" min="0" max="500000" oninput="calc()">
+        <div class="field-hint">Kreditbetrag = Kaufpreis − Eigenkapital</div>
+      </div>
+      <div class="field">
+        <label>Kaufnebenkosten (%)</label>
+        <input type="number" id="nebenkosten" value="7.5" min="0" max="20" step="0.1" oninput="calc()">
+        <div class="field-hint">Notar + Grunderwerbsteuer (NRW: 6,5 %) + ggf. Makler</div>
+      </div>
+      <div class="field">
+        <label>Monatsmiete (€)</label>
+        <input type="number" id="miete" value="80" min="0" max="2000" oninput="calc()">
+      </div>
+      <div class="field">
+        <label>Laufende Kosten (€/Monat)</label>
+        <input type="number" id="kosten" value="30" min="0" max="500" oninput="calc()">
+        <div class="field-hint">Hausgeld, Verwaltung etc.</div>
+      </div>
+    </div>
+
+    <div class="calc-panel">
+      <div class="panel-title">🏦 Kreditkonditionen</div>
+      <div class="field">
+        <label>Zinssatz (% p.a.)</label>
+        <div class="slider-wrap">
+          <div class="slider-header">
+            <span style="font-size:13px;color:var(--text-muted)">Effektivzins</span>
+            <span class="slider-val" id="zins-val">5,5%</span>
+          </div>
+          <input type="range" id="zinssatz" min="1" max="12" value="5.5" step="0.1" oninput="updateSlider(this,'zins-val','%'); calc()">
+        </div>
+        <div class="field-hint">Aktuell typisch für Ratenkredite: 5–7 %; Immobilienkredite: 3–4 %</div>
+      </div>
+      <div class="field">
+        <label>Laufzeit (Jahre)</label>
+        <div class="slider-wrap">
+          <div class="slider-header">
+            <span style="font-size:13px;color:var(--text-muted)">Kreditlaufzeit</span>
+            <span class="slider-val" id="laufzeit-val">10 Jahre</span>
+          </div>
+          <input type="range" id="laufzeit" min="1" max="30" value="10" step="1" oninput="updateSliderJ(this,'laufzeit-val'); calc()">
+        </div>
+      </div>
+      <div class="field">
+        <label>Tilgungsart</label>
+        <select id="tilgungsart" onchange="calc()" style="width:100%;padding:10px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;font-size:15px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);outline:none;">
+          <option value="annuity">Annuitätendarlehen (gleichbleibende Rate)</option>
+          <option value="linear">Ratentilgung (sinkende Rate)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="results-panel animate">
+    <div class="results-title">📊 Deine Finanzierungsübersicht</div>
+    <div class="metrics-grid">
+      <div class="metric">
+        <div class="metric-label">Monatliche Rate</div>
+        <div class="metric-value" id="r-rate">–</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Monatl. Cash-Flow</div>
+        <div class="metric-value" id="r-cashflow">–</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Gesamtzinsen</div>
+        <div class="metric-value" id="r-zinsen">–</div>
+      </div>
+    </div>
+    <div class="metrics-grid" style="margin-bottom:24px">
+      <div class="metric">
+        <div class="metric-label">Kreditbetrag</div>
+        <div class="metric-value" id="r-kredit">–</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Gesamtkosten</div>
+        <div class="metric-value" id="r-gesamt">–</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">EK-Rendite</div>
+        <div class="metric-value" id="r-ekrendite">–</div>
+      </div>
+    </div>
+    <div class="verdict" id="verdict"></div>
+    <div class="timeline">
+      <div class="timeline-title">Zusammensetzung der Gesamtkosten</div>
+      <div class="timeline-row">
+        <div class="timeline-label">Tilgung</div>
+        <div class="timeline-bar-bg"><div class="timeline-bar bar-tilgung" id="bar-tilgung" style="width:0%"></div></div>
+        <div class="timeline-num" id="num-tilgung">–</div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-label">Zinsen</div>
+        <div class="timeline-bar-bg"><div class="timeline-bar bar-zinsen" id="bar-zinsen" style="width:0%"></div></div>
+        <div class="timeline-num" id="num-zinsen">–</div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-label">Gesamtkosten</div>
+        <div class="timeline-bar-bg"><div class="timeline-bar bar-gesamt" id="bar-gesamt" style="width:100%"></div></div>
+        <div class="timeline-num" id="num-gesamt">–</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn-box animate">
+    <div class="warn-box-title">⚠️ Wichtiger Hinweis</div>
+    <p>Dieser Rechner dient nur zur Orientierung und ersetzt keine professionelle Finanzberatung. Aktuelle Zinsen und Konditionen variieren je nach Anbieter, Bonität und Sicherheiten. Hole immer mehrere Angebote ein bevor du einen Kredit abschließt.</p>
+  </div>
+
+  <div class="link-box animate">
+    <div class="link-box-text">
+      <strong>Rendite mit Eigenkapital vergleichen</strong>
+      Prüfe im Renditerechner wie sich das Investment ohne Kredit rechnet – der direkte Vergleich zeigt ob der Hebel sich lohnt.
+    </div>
+    <a href="garagen-renditerechner.html" class="btn-navy">Zum Renditerechner →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="sidebar-logo-icon" style="width:26px;height:26px;font-size:13px">G</div>
+      <span class="footer-copy">© 2026 GarageInvest · Alle Angaben ohne Gewähr · Keine Anlageberatung</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="impressum.html">Impressum</a></li>
+      <li><a href="datenschutz.html">Datenschutz</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+function updateSlider(el, id, suffix) {
+  document.getElementById(id).textContent = el.value.replace('.', ',') + suffix;
+}
+function updateSliderJ(el, id) {
+  document.getElementById(id).textContent = el.value + ' Jahre';
+}
+function fmt(n, d=2) {
+  return n.toLocaleString('de-DE', {minimumFractionDigits:d, maximumFractionDigits:d});
+}
+function fmtE(n) { return fmt(n,0) + ' €'; }
+function fmtP(n) { return fmt(n,2) + ' %'; }
+function setM(id, val, cls='') {
+  const el = document.getElementById(id);
+  el.textContent = val;
+  el.className = 'metric-value' + (cls ? ' ' + cls : '');
+}
+
+function calc() {
+  const kaufpreis   = parseFloat(document.getElementById('kaufpreis').value) || 0;
+  const ek          = parseFloat(document.getElementById('eigenkapital').value) || 0;
+  const nebenkPct   = parseFloat(document.getElementById('nebenkosten').value) || 0;
+  const miete       = parseFloat(document.getElementById('miete').value) || 0;
+  const kosten      = parseFloat(document.getElementById('kosten').value) || 0;
+  const zinsPct     = parseFloat(document.getElementById('zinssatz').value) || 0;
+  const laufzeit    = parseInt(document.getElementById('laufzeit').value) || 1;
+  const art         = document.getElementById('tilgungsart').value;
+
+  const nebenkosten  = kaufpreis * nebenkPct / 100;
+  const gesamtinvest = kaufpreis + nebenkosten;
+  const kredit       = Math.max(0, gesamtinvest - ek);
+  const zinsMonat    = zinsPct / 100 / 12;
+  const monate       = laufzeit * 12;
+
+  let rate = 0, gesamtZinsen = 0, gesamtRueckzahlung = 0;
+
+  if (kredit > 0 && zinsMonat > 0) {
+    if (art === 'annuity') {
+      // Annuität
+      rate = kredit * (zinsMonat * Math.pow(1 + zinsMonat, monate)) / (Math.pow(1 + zinsMonat, monate) - 1);
+      gesamtRueckzahlung = rate * monate;
+      gesamtZinsen = gesamtRueckzahlung - kredit;
+    } else {
+      // Ratentilgung – Rate sinkt, wir zeigen Anfangsrate
+      const tilgungMonat = kredit / monate;
+      rate = tilgungMonat + kredit * zinsMonat; // erste Rate (höchste)
+      gesamtZinsen = kredit * zinsMonat * (monate + 1) / 2;
+      gesamtRueckzahlung = kredit + gesamtZinsen;
+    }
+  } else if (kredit > 0) {
+    rate = kredit / monate;
+    gesamtRueckzahlung = kredit;
+    gesamtZinsen = 0;
+  }
+
+  const cashflow = miete - kosten - rate;
+  const cashflowJahr = cashflow * 12;
+  const ekRendite = ek > 0 ? (cashflowJahr / ek) * 100 : 0;
+  const gesamtkosten = gesamtRueckzahlung + ek + nebenkosten;
+
+  setM('r-rate', kredit > 0 ? fmtE(rate) : '0 €');
+  setM('r-cashflow', fmtE(cashflow), cashflow >= 0 ? 'good' : 'bad');
+  setM('r-zinsen', fmtE(gesamtZinsen), gesamtZinsen > kredit * 0.3 ? 'warn' : '');
+  setM('r-kredit', fmtE(kredit));
+  setM('r-gesamt', fmtE(gesamtkosten));
+  setM('r-ekrendite', fmtP(ekRendite), ekRendite >= 4 ? 'good' : ekRendite >= 0 ? '' : 'bad');
+
+  // Bars
+  const maxBar = Math.max(kredit, gesamtZinsen, 1);
+  document.getElementById('bar-tilgung').style.width = (kredit / maxBar * 100) + '%';
+  document.getElementById('num-tilgung').textContent = fmtE(kredit);
+  document.getElementById('bar-zinsen').style.width = (gesamtZinsen / maxBar * 100) + '%';
+  document.getElementById('num-zinsen').textContent = fmtE(gesamtZinsen);
+  document.getElementById('num-gesamt').textContent = fmtE(gesamtRueckzahlung);
+
+  // Verdict
+  const v = document.getElementById('verdict');
+  if (kredit === 0) {
+    v.className = 'verdict good';
+    v.innerHTML = '<span class="verdict-icon">✅</span><span><strong>100 % Eigenkapital.</strong> Keine Zinskosten, maximale Rendite. Das ist die optimale Strategie wenn das Kapital vorhanden ist.</span>';
+  } else if (cashflow >= 0 && ekRendite >= 4) {
+    v.className = 'verdict good';
+    v.innerHTML = `<span class="verdict-icon">✅</span><span><strong>Positiver Hebel!</strong> Der monatliche Cash-Flow ist positiv und die Eigenkapitalrendite von ${fmtP(ekRendite)} rechtfertigt den Kredit. Die Finanzierung funktioniert.</span>`;
+  } else if (cashflow >= 0 && ekRendite >= 0) {
+    v.className = 'verdict ok';
+    v.innerHTML = `<span class="verdict-icon">⚖️</span><span><strong>Knapp positiv.</strong> Der Cash-Flow ist leicht positiv (${fmtE(cashflow)}/Monat), aber die Eigenkapitalrendite von ${fmtP(ekRendite)} ist gering. Prüfe ob ein günstigerer Zinssatz oder höhere Miete möglich ist.</span>`;
+  } else {
+    v.className = 'verdict bad';
+    v.innerHTML = `<span class="verdict-icon">❌</span><span><strong>Negativer Cash-Flow!</strong> Du musst monatlich ${fmtE(Math.abs(cashflow))} draufzahlen. Die Mieteinnahmen decken Kredit und Kosten nicht – dieses Investment lohnt sich zu diesen Konditionen nicht.</span>`;
+  }
+}
+calc();
+</script>
+
+
+
+
+
+<!-- ═══ SIDEBAR START ═══ -->
+<div id="sb-ov" onclick="sbClose()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:1000"></div>
+<div id="sb" style="position:fixed;top:0;left:0;bottom:0;width:290px;background:#fff;border-right:1px solid #e2ddd6;z-index:1001;display:flex;flex-direction:column;box-shadow:4px 0 24px rgba(0,0,0,0.12);transform:translateX(-100%);transition:transform .3s ease;overflow-y:auto">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid #e2ddd6;flex-shrink:0">
+    <a href="index.html" style="display:flex;align-items:center;gap:9px;text-decoration:none">
+      <div style="width:26px;height:26px;background:#0f2444;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:13px;font-family:serif">G</div>
+      <span style="font-family:serif;font-size:15px;font-weight:700;color:#1a1814">Garage<span style="color:#0f2444">Invest</span></span>
+    </a>
+    <div onclick="sbClose()" style="cursor:pointer;width:28px;height:28px;background:#f5f4f1;border:1px solid #e2ddd6;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#5c564e;font-size:14px">✕</div>
+  </div>
+  <div style="padding:8px 0 16px;flex:1;overflow-y:auto">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Hauptseiten</div>
+    <a href="index.html" class="sb-item">🏠 Startseite</a>
+    <a href="angebote.html" class="sb-item">🔍 Aktuelle Angebote</a>
+    <a href="anbieter-vergleich.html" class="sb-item">⭐ Anbieter-Vergleich</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">🛠️ Tools &amp; Rechner</div>
+    <a href="garagen-renditerechner.html" class="sb-item">🧮 Renditerechner</a>
+    <a href="finanzierungsrechner.html" style="display:block;padding:8px 15px;text-decoration:none;color:#0f2444;background:rgba(15,36,68,0.1);font-weight:700;border-left:3px solid #0f2444">💳 Finanzierungsrechner</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Städte &amp; Märkte</div>
+    <a href="nrw.html" class="sb-item">🗺️ NRW Übersicht</a>
+    <a href="ruhrgebiet.html" class="sb-item">🏭 Ruhrgebiet</a>
+    <a href="essen.html" class="sb-item">📍 Essen</a>
+    <a href="duesseldorf.html" class="sb-item">📍 Düsseldorf</a>
+    <a href="duisburg.html" class="sb-item">📍 Duisburg</a>
+    <a href="koeln.html" class="sb-item">📍 Köln</a>
+    <a href="oberhausen.html" class="sb-item">📍 Oberhausen</a>
+    <a href="wuppertal.html" class="sb-item">📍 Wuppertal</a>
+    <a href="dinslaken.html" class="sb-item">📍 Dinslaken</a>
+    <a href="bochum.html" class="sb-item">📍 Bochum</a>
+    <a href="dortmund.html" class="sb-item">📍 Dortmund</a>
+    <a href="muelheim.html" class="sb-item">📍 Mülheim</a>
+    <a href="krefeld.html" class="sb-item">📍 Krefeld</a>
+    <a href="gelsenkirchen.html" class="sb-item">📍 Gelsenkirchen</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Ratgeber &amp; Wissen</div>
+    <a href="ratgeber.html" class="sb-item">📚 Alle Ratgeber</a>
+    <a href="ratgeber-einsteiger.html" class="sb-item">🏗️ Einsteiger-Guide</a>
+    <a href="ratgeber-steuern.html" class="sb-item">💰 Steuern</a>
+    <a href="ratgeber-kaufcheckliste.html" class="sb-item">✅ Kaufcheckliste</a>
+    <a href="ratgeber-finanzierung.html" class="sb-item">💳 Finanzierung</a>
+    <a href="ratgeber-skalierung.html" class="sb-item">📈 Skalierung</a>
+    <a href="faq.html" class="sb-item">❓ FAQ</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Blog</div>
+    <a href="blog.html" class="sb-item">✍️ Alle Artikel</a>
+    <a href="blog-5-fehler.html" class="sb-item">⚠️ 5 Fehler beim Kauf</a>
+    <a href="blog-mieter-finden.html" class="sb-item">🤝 Mieter finden</a>
+    <a href="blog-eauto-trend.html" class="sb-item">⚡ E-Auto Trend</a>
+  </div>
+  <a href="garagen-renditerechner.html" style="margin:12px;background:#0f2444;border-radius:10px;padding:12px 16px;text-decoration:none;color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;flex-shrink:0">🧮 Rendite berechnen →</a>
+</div>
+<style>
+.sb-item{display:block;padding:8px 18px;text-decoration:none;color:#5c564e;font-size:13.5px;font-weight:500}
+.sb-item:hover{background:rgba(15,36,68,.05);color:#0f2444}
+</style>
+<script>
+function sbOpen(){
+  document.getElementById('sb').style.transform='translateX(0)';
+  document.getElementById('sb-ov').style.display='block';
+  document.body.style.overflow='hidden';
+}
+function sbClose(){
+  document.getElementById('sb').style.transform='translateX(-100%)';
+  document.getElementById('sb-ov').style.display='none';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')sbClose();});
+</script>
+<!-- ═══ SIDEBAR END ═══ -->
+
+
+
+</body>
+</html>

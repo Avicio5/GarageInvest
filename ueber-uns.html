@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Über GarageInvest – wer steckt dahinter und warum wurde diese Plattform für Garagen-Investments in Deutschland aufgebaut.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://garageinvest.netlify.app/ueber-uns.html">
+<meta property="og:title" content="Über uns | GarageInvest">
+<meta property="og:description" content="Wer steckt hinter GarageInvest? Die Geschichte hinter der unabhängigen Plattform für Garagen-Investments in Deutschland.">
+<meta property="og:site_name" content="GarageInvest">
+<title>Über uns | GarageInvest</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f9f8f6; --bg2: #f0eeea;
+  --surface: #ffffff; --surface2: #f5f4f1;
+  --border: #e2ddd6; --border2: #ccc8bf;
+  --navy: #0f2444; --navy-dim: #1a3a6e;
+  --navy-faint: rgba(15,36,68,0.06); --navy-mid: rgba(15,36,68,0.12);
+  --accent: #16a34a;
+  --text: #1a1814; --text-muted: #5c564e; --text-dim: #9b9590;
+  --radius: 14px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: "Plus Jakarta Sans", sans-serif; overflow-x: hidden; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(249,248,246,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+.nav-left { display: flex; align-items: center; gap: 16px; }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-icon { width: 32px; height: 32px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 900; color: #fff; font-family: "Fraunces", serif; }
+.nav-logo-text { font-family: "Fraunces", serif; font-size: 18px; font-weight: 700; color: var(--text); }
+.nav-logo-text span { color: var(--navy); }
+.nav-sub { font-size: 10px; color: var(--text-dim); font-weight: 500; letter-spacing: 0.3px; margin-top: 1px; }
+.nav-tagline { position: absolute; left: 50%; transform: translateX(-50%); font-size: 12px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px; white-space: nowrap; }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+.nav-links a:hover { color: var(--navy); background: var(--navy-faint); }
+.nav-cta { background: var(--navy) !important; color: #fff !important; font-weight: 600 !important; }
+.nav-hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; }
+.nav-hamburger span { display: block; width: 18px; height: 2px; background: var(--text-muted); border-radius: 2px; }
+@media (max-width: 680px) { nav { padding: 0 16px; } .nav-links { display: none; } .nav-tagline { display: none; } }
+.wrap { max-width: 820px; margin: 0 auto; padding: 100px 32px 80px; }
+@media (max-width: 680px) { .wrap { padding: 88px 20px 60px; } }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; margin-bottom: 64px; padding-bottom: 56px; border-bottom: 1px solid var(--border); }
+@media (max-width: 600px) { .hero { grid-template-columns: 1fr; } .avatar { display: none; } }
+.page-tag { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy); margin-bottom: 14px; }
+h1 { font-family: "Fraunces", serif; font-size: clamp(34px, 5vw, 52px); font-weight: 900; line-height: 1.08; letter-spacing: -1.5px; margin-bottom: 20px; }
+h1 em { font-style: italic; color: var(--navy); }
+.hero-desc { font-size: 17px; color: var(--text-muted); font-weight: 300; line-height: 1.75; }
+.avatar { width: 140px; height: 140px; border-radius: 50%; background: var(--navy-faint); border: 3px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.avatar-initial { font-family: "Fraunces", serif; font-size: 52px; font-weight: 900; color: var(--navy); }
+
+/* Story */
+.story-section { margin-bottom: 56px; }
+h2 { font-family: "Fraunces", serif; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 16px; color: var(--text); }
+h2 em { font-style: italic; color: var(--navy); }
+p { font-size: 16px; color: var(--text-muted); line-height: 1.8; font-weight: 300; margin-bottom: 18px; }
+p strong { color: var(--text); font-weight: 600; }
+
+/* Werte Cards */
+.values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 56px; }
+@media (max-width: 560px) { .values-grid { grid-template-columns: 1fr; } }
+.value-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); }
+.value-icon { font-size: 28px; margin-bottom: 12px; }
+.value-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.value-desc { font-size: 14px; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+
+/* Stats */
+.stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 56px; }
+@media (max-width: 480px) { .stats-row { grid-template-columns: 1fr 1fr; } }
+.stat-card { background: var(--navy); border-radius: var(--radius); padding: 24px 20px; text-align: center; }
+.stat-num { font-family: "Fraunces", serif; font-size: 34px; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 6px; }
+.stat-label { font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 500; letter-spacing: 0.3px; }
+
+/* CTA */
+.cta-box { background: var(--navy-faint); border: 1px solid var(--navy-mid); border-radius: var(--radius); padding: 36px; text-align: center; }
+.cta-box h2 { margin-bottom: 10px; }
+.cta-box p { margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.btn-navy { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: #fff; text-decoration: none; font-weight: 600; font-size: 15px; padding: 13px 28px; border-radius: 10px; transition: background 0.2s; margin: 6px; }
+.btn-navy:hover { background: var(--navy-dim); }
+.btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 15px; padding: 13px 28px; border-radius: 10px; border: 1px solid var(--border); transition: all 0.2s; margin: 6px; }
+.btn-ghost:hover { border-color: var(--navy); color: var(--navy); background: var(--navy-faint); }
+
+/* Footer */
+footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(--navy); }
+.footer-inner { max-width: 820px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.5); }
+.footer-links { display: flex; gap: 20px; list-style: none; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.animate { opacity: 0; animation: fadeUp 0.5s ease forwards; }
+.d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.15s; } .d3 { animation-delay: 0.25s; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <button onclick="sbOpen()" class="nav-hamburger" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">G</div>
+      <div>
+        <div class="nav-logo-text">Garage<span>Invest</span></div>
+        <div class="nav-sub">Immobilien-Kapitalanlage</div>
+      </div>
+    </a>
+  </div>
+  <span class="nav-tagline">🏗️ &nbsp;Deine Immobilien-Kapitalanlage ab 8.000 €</span>
+  <ul class="nav-links">
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="nrw.html">Städte</a></li>
+    <li><a href="ratgeber.html">Ratgeber</a></li>
+    <li><a href="angebote.html">Angebote</a></li>
+    <li><a href="ueber-uns.html" style="color:#0f2444;background:rgba(15,36,68,0.1);font-weight:700;border-radius:8px">Über uns</a></li>
+    <li><a href="garagen-renditerechner.html" class="nav-cta">Renditerechner</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+  <div class="hero animate">
+    <div>
+      <div class="page-tag d1">👋 Über GarageInvest</div>
+      <h1 class="d2">Hallo, ich bin <em>Fynn</em> –<br>aus Dinslaken, NRW.</h1>
+      <p class="hero-desc d3">Ich habe GarageInvest aufgebaut weil ich selbst nach einer Möglichkeit gesucht habe passives Einkommen aufzubauen – ohne hunderttausende Euro Eigenkapital und ohne monatelangen Verwaltungsaufwand. Garagen-Investments haben mich sofort überzeugt. Und ich wollte das Wissen das ich dabei gesammelt habe weitergeben.</p>
+    </div>
+    <div class="avatar animate d3">
+      <span class="avatar-initial">F</span>
+    </div>
+  </div>
+
+  <div class="story-section animate">
+    <h2>Wie es <em>angefangen</em> hat</h2>
+    <p>Wie viele andere habe ich lange nach Wegen gesucht mein Geld sinnvoll arbeiten zu lassen. ETFs, Tagesgeld, Aktien – alles bekannt, alles gut. Aber ich wollte etwas <strong>Greifbares</strong>. Eine echte Immobilie, ein eigener Grundbucheintrag, monatliche Mieteinnahmen.</p>
+    <p>Das Problem: Eine Eigentumswohnung ist teuer, aufwändig und mit Mieterschutzrecht verbunden das einem schnell die Hände bindet. Dann bin ich auf Garagen und Stellplätze gestoßen – und war sofort fasziniert. <strong>Einstieg ab 8.000 €, kaum Verwaltungsaufwand, solide Renditen, kein kompliziertes Mietrecht.</strong></p>
+    <p>Was mich frustriert hat: Es gab keine vernünftige deutsche Informationsquelle die alle relevanten Fragen beantwortet. Kaufpreise, Renditen, Steuern, Stadtvergleiche – alles verstreut über Foren und halbgare Blog-Artikel. Also habe ich GarageInvest gebaut.</p>
+  </div>
+
+  <div class="story-section animate">
+    <h2>Was GarageInvest <em>ist</em> – und was nicht</h2>
+    <p>GarageInvest ist eine <strong>unabhängige Informationsplattform</strong>. Ich verdiene kein Geld damit Produkte zu empfehlen oder Provisionen zu kassieren. Kein Anbieter bezahlt mich dafür positiv bewertet zu werden.</p>
+    <p>Das bedeutet: Was du hier liest ist meine ehrliche Einschätzung – basierend auf eigener Recherche, Marktdaten und dem Austausch mit echten Investoren. Wenn etwas nicht empfehlenswert ist, sage ich das auch.</p>
+    <p>GarageInvest ist außerdem <strong>keine Anlageberatung</strong>. Ich bin kein Finanzberater und kein Steuerberater. Die Inhalte auf dieser Seite helfen dir informierte Entscheidungen zu treffen – die Entscheidung selbst liegt immer bei dir.</p>
+  </div>
+
+  <div class="values-grid animate">
+    <div class="value-card">
+      <div class="value-icon">🎯</div>
+      <div class="value-title">Ehrlichkeit vor Optimismus</div>
+      <div class="value-desc">Ich zeige Renditen realistisch – nach Kosten, Leerstand und Steuern. Keine geschönten Zahlen um Investments besser aussehen zu lassen als sie sind.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🔍</div>
+      <div class="value-title">Unabhängige Recherche</div>
+      <div class="value-desc">Alle Marktdaten basieren auf eigener Recherche von Portalen wie ImmoScout24, Immowelt und Kleinanzeigen – kein Sponsoring, keine Interessenkonflikte.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🚀</div>
+      <div class="value-title">Einsteiger-freundlich</div>
+      <div class="value-desc">Ich erkläre alles so dass man kein Vorwissen braucht. Von der ersten Renditeberechnung bis zur Steuererklärung – Schritt für Schritt.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">📍</div>
+      <div class="value-title">NRW-Fokus mit Weitblick</div>
+      <div class="value-desc">Der Schwerpunkt liegt auf Nordrhein-Westfalen – dem Markt den ich selbst am besten kenne. Mit klaren Stadtanalysen für 14 Städte.</div>
+    </div>
+  </div>
+
+  <div class="stats-row animate">
+    <div class="stat-card">
+      <div class="stat-num">14</div>
+      <div class="stat-label">Städte analysiert</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Kostenlose Rechner</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Ratgeber-Artikel</div>
+    </div>
+  </div>
+
+  <div class="cta-box animate">
+    <h2>Bereit für deinen <em>ersten Schritt?</em></h2>
+    <p>Starte mit dem Renditerechner und sieh sofort ob ein Objekt das du im Blick hast wirklich rentabel ist – oder lies den Einsteiger-Guide wenn du noch ganz am Anfang stehst.</p>
+    <div>
+      <a href="garagen-renditerechner.html" class="btn-navy">🧮 Zum Renditerechner</a>
+      <a href="ratgeber-einsteiger.html" class="btn-ghost">📚 Einsteiger-Guide lesen</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-icon" style="width:26px;height:26px;font-size:13px;background:rgba(255,255,255,0.15)">G</div>
+      <span class="footer-copy">© 2026 GarageInvest · Alle Angaben ohne Gewähr · Keine Anlageberatung</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="impressum.html">Impressum</a></li>
+      <li><a href="datenschutz.html">Datenschutz</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- ═══ SIDEBAR START ═══ -->
+<div id="sb-ov" onclick="sbClose()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:1000"></div>
+<div id="sb" style="position:fixed;top:0;left:0;bottom:0;width:290px;background:#fff;border-right:1px solid #e2ddd6;z-index:1001;display:flex;flex-direction:column;box-shadow:4px 0 24px rgba(0,0,0,0.12);transform:translateX(-100%);transition:transform .3s ease;overflow-y:auto">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid #e2ddd6;flex-shrink:0">
+    <a href="index.html" style="display:flex;align-items:center;gap:9px;text-decoration:none">
+      <div style="width:26px;height:26px;background:#0f2444;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:13px;font-family:serif">G</div>
+      <span style="font-family:serif;font-size:15px;font-weight:700;color:#1a1814">Garage<span style="color:#0f2444">Invest</span></span>
+    </a>
+    <div onclick="sbClose()" style="cursor:pointer;width:28px;height:28px;background:#f5f4f1;border:1px solid #e2ddd6;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#5c564e;font-size:14px">✕</div>
+  </div>
+  <div style="padding:8px 0 16px;flex:1;overflow-y:auto">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Hauptseiten</div>
+    <a href="index.html" class="sb-item">🏠 Startseite</a>
+    <a href="ueber-uns.html" style="display:block;padding:8px 15px;text-decoration:none;color:#0f2444;background:rgba(15,36,68,0.1);font-weight:700;border-left:3px solid #0f2444">👋 Über uns</a>
+    <a href="angebote.html" class="sb-item">🔍 Aktuelle Angebote</a>
+    <a href="anbieter-vergleich.html" class="sb-item">⭐ Anbieter-Vergleich</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">🛠️ Tools &amp; Rechner</div>
+    <a href="garagen-renditerechner.html" class="sb-item">🧮 Renditerechner</a>
+    <a href="finanzierungsrechner.html" class="sb-item">💳 Finanzierungsrechner</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Städte &amp; Märkte</div>
+    <a href="nrw.html" class="sb-item">🗺️ NRW Übersicht</a>
+    <a href="ruhrgebiet.html" class="sb-item">🏭 Ruhrgebiet</a>
+    <a href="essen.html" class="sb-item">📍 Essen</a>
+    <a href="duesseldorf.html" class="sb-item">📍 Düsseldorf</a>
+    <a href="duisburg.html" class="sb-item">📍 Duisburg</a>
+    <a href="koeln.html" class="sb-item">📍 Köln</a>
+    <a href="oberhausen.html" class="sb-item">📍 Oberhausen</a>
+    <a href="wuppertal.html" class="sb-item">📍 Wuppertal</a>
+    <a href="dinslaken.html" class="sb-item">📍 Dinslaken</a>
+    <a href="bochum.html" class="sb-item">📍 Bochum</a>
+    <a href="dortmund.html" class="sb-item">📍 Dortmund</a>
+    <a href="muelheim.html" class="sb-item">📍 Mülheim</a>
+    <a href="krefeld.html" class="sb-item">📍 Krefeld</a>
+    <a href="gelsenkirchen.html" class="sb-item">📍 Gelsenkirchen</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Ratgeber &amp; Wissen</div>
+    <a href="ratgeber.html" class="sb-item">📚 Alle Ratgeber</a>
+    <a href="ratgeber-einsteiger.html" class="sb-item">🏗️ Einsteiger-Guide</a>
+    <a href="ratgeber-steuern.html" class="sb-item">💰 Steuern</a>
+    <a href="ratgeber-kaufcheckliste.html" class="sb-item">✅ Kaufcheckliste</a>
+    <a href="ratgeber-finanzierung.html" class="sb-item">💳 Finanzierung</a>
+    <a href="ratgeber-skalierung.html" class="sb-item">📈 Skalierung</a>
+    <a href="faq.html" class="sb-item">❓ FAQ</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Blog</div>
+    <a href="blog.html" class="sb-item">✍️ Alle Artikel</a>
+    <a href="blog-5-fehler.html" class="sb-item">⚠️ 5 Fehler beim Kauf</a>
+    <a href="blog-mieter-finden.html" class="sb-item">🤝 Mieter finden</a>
+    <a href="blog-eauto-trend.html" class="sb-item">⚡ E-Auto Trend</a>
+  </div>
+  <a href="garagen-renditerechner.html" style="margin:12px;background:#0f2444;border-radius:10px;padding:12px 16px;text-decoration:none;color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;flex-shrink:0">🧮 Rendite berechnen →</a>
+</div>
+<style>
+.sb-item{display:block;padding:8px 18px;text-decoration:none;color:#5c564e;font-size:13.5px;font-weight:500}
+.sb-item:hover{background:rgba(15,36,68,.05);color:#0f2444}
+</style>
+<script>
+function sbOpen(){
+  document.getElementById('sb').style.transform='translateX(0)';
+  document.getElementById('sb-ov').style.display='block';
+  document.body.style.overflow='hidden';
+}
+function sbClose(){
+  document.getElementById('sb').style.transform='translateX(-100%)';
+  document.getElementById('sb-ov').style.display='none';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')sbClose();});
+</script>
+<!-- ═══ SIDEBAR END ═══ -->
+
+</body>
+</html>

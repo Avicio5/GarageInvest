@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+<meta charset="UTF-8">
+<meta name="description" content="Berechne Brutto-, Netto- und Nachsteuer-Rendite für jeden Stellplatz oder jede Garage. Kostenlos, sofort, ohne Anmeldung.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="GarageInvest">
+<link rel="canonical" href="https://garageinvest.netlify.app/garagen-renditerechner.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Garagen Renditerechner – Lohnt sich dein Investment? | GarageInvest">
+<meta property="og:description" content="Berechne Brutto-, Netto- und Nachsteuer-Rendite für jeden Stellplatz oder jede Garage. Kostenlos, sofort, ohne Anmeldung.">
+<meta property="og:site_name" content="GarageInvest">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Garagen Renditerechner – Lohnt sich dein Investment? | GarageInvest">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garagen Renditerechner – Lohnt sich dein Investment? | GarageInvest</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f9f8f6; --bg2: #f0eeea;
+  --surface: #ffffff; --surface2: #f5f4f1;
+  --border: #e2ddd6; --border2: #ccc8bf;
+  --navy: #0f2444; --navy-dim: #1a3a6e;
+  --navy-faint: rgba(15,36,68,0.06); --navy-mid: rgba(15,36,68,0.12);
+  --accent: #16a34a; --accent-dim: #15803d;
+  --red: #dc2626; --amber: #d97706;
+  --text: #1a1814; --text-muted: #5c564e; --text-dim: #9b9590;
+  --gold: #0f2444; --gold-dim: #1a3a6e; --gold-faint: rgba(15,36,68,0.06);
+  --green: #16a34a; --radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: "Plus Jakarta Sans", sans-serif; overflow-x: hidden; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(249,248,246,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-icon { width: 32px; height: 32px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 900; color: #fff; font-family: "Fraunces", serif; }
+.nav-logo-text { font-family: "Fraunces", serif; font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+.nav-logo-text span { color: var(--navy); }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+.nav-links a:hover { color: var(--text); background: var(--navy-faint); }
+.nav-cta { background: var(--navy) !important; color: #fff !important; font-weight: 600 !important; }
+.nav-cta:hover { background: var(--navy-dim) !important; }
+
+
+
+
+@media (max-width: 680px) { nav { padding: 0 16px; } .nav-links { display: none; } }
+
+/* SIDEBAR */
+
+
+
+
+
+
+
+
+
+
+.sidebar-close:hover { background: var(--navy-faint); color: var(--navy); border-color: var(--navy); }
+
+
+
+
+
+
+
+
+
+
+.sidebar-cta:hover { background: var(--navy-dim); }
+
+/* PAGE */
+.page-wrap { max-width: 900px; margin: 0 auto; padding: 96px 32px 80px; }
+@media (max-width: 680px) { .page-wrap { padding: 88px 16px 60px; } }
+.page-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+.page-tag { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy); margin-bottom: 12px; }
+h1 { font-family: "Fraunces", serif; font-size: clamp(32px, 5vw, 48px); font-weight: 900; line-height: 1.08; letter-spacing: -1.5px; margin-bottom: 12px; }
+h1 em { font-style: italic; color: var(--navy); }
+.page-desc { font-size: 16px; color: var(--text-muted); font-weight: 300; line-height: 1.7; }
+
+/* CALC GRID */
+.calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+@media (max-width: 680px) { .calc-grid { grid-template-columns: 1fr; } }
+.calc-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); }
+.panel-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); margin-bottom: 20px; }
+.field { margin-bottom: 18px; }
+.field:last-child { margin-bottom: 0; }
+.field label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.field-hint { font-size: 11px; color: var(--text-dim); margin-top: 3px; }
+input[type="number"] { width: 100%; padding: 10px 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; font-size: 15px; font-weight: 500; color: var(--text); font-family: "Plus Jakarta Sans", sans-serif; outline: none; transition: border-color 0.2s; }
+input[type="number"]:focus { border-color: var(--navy); background: var(--surface); }
+.slider-wrap { display: flex; flex-direction: column; gap: 6px; }
+.slider-header { display: flex; justify-content: space-between; align-items: center; }
+.slider-val { font-size: 15px; font-weight: 700; color: var(--navy); }
+input[type="range"] { width: 100%; height: 4px; accent-color: var(--navy); cursor: pointer; }
+
+/* RESULTS */
+.results-panel { background: var(--navy); border-radius: var(--radius); padding: 32px; color: #fff; box-shadow: var(--shadow); margin-bottom: 24px; }
+.results-title { font-family: "Fraunces", serif; font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 24px; opacity: 0.9; }
+.metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+@media (max-width: 560px) { .metrics-grid { grid-template-columns: 1fr 1fr; } }
+.metric { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 16px; text-align: center; }
+.metric-label { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+.metric-value { font-family: "Fraunces", serif; font-size: 26px; font-weight: 700; color: #fff; }
+.metric-value.good { color: #4ade80; }
+.metric-value.bad { color: #f87171; }
+.metrics-grid-2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+@media (max-width: 560px) { .metrics-grid-2 { grid-template-columns: 1fr 1fr; } }
+.metric.sm .metric-value { font-size: 18px; }
+
+/* VERDICT */
+.verdict { border-radius: 10px; padding: 16px 20px; display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+.verdict.good { background: rgba(74,222,128,0.12); border: 1px solid rgba(74,222,128,0.25); color: #bbf7d0; }
+.verdict.ok { background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.2); color: #fde68a; }
+.verdict.bad { background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.2); color: #fecaca; }
+.verdict-icon { font-size: 20px; flex-shrink: 0; }
+
+/* BARS */
+.bar-section { background: rgba(255,255,255,0.06); border-radius: 10px; padding: 20px; }
+.bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.bar-row:last-child { margin-bottom: 0; }
+.bar-label { font-size: 12px; color: rgba(255,255,255,0.6); width: 100px; flex-shrink: 0; }
+.bar-bg { flex: 1; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease; }
+.bar-fill.green { background: linear-gradient(90deg, #16a34a, #4ade80); }
+.bar-fill.red { background: linear-gradient(90deg, #dc2626, #f87171); }
+.bar-fill.navy { background: linear-gradient(90deg, rgba(255,255,255,0.4), rgba(255,255,255,0.7)); }
+.bar-num { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.8); width: 90px; text-align: right; flex-shrink: 0; }
+.amort-row { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 4px; }
+.amort-label { font-size: 12px; color: rgba(255,255,255,0.6); width: 100px; flex-shrink: 0; }
+.amort-num { font-family: "Fraunces", serif; font-size: 22px; font-weight: 700; color: #fff; }
+
+/* HINT BOX */
+.hint-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; font-size: 13px; color: var(--text-muted); line-height: 1.7; box-shadow: var(--shadow-sm); }
+.hint-box strong { color: var(--navy); }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(--navy); }
+.footer-inner { max-width: 900px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.5); }
+.footer-links { display: flex; gap: 20px; list-style: none; }
+.footer-links a { font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.animate { opacity: 0; animation: fadeUp 0.5s ease forwards; }
+
+/* ── ACTIVE NAV + DROPDOWN ── */
+.nav-links a.nav-active { color: var(--navy) !important; background: var(--navy-faint) !important; font-weight: 600 !important; }
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle { display: flex; align-items: center; gap: 5px; color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: color 0.2s, background 0.2s; cursor: pointer; border: none; background: none; font-family: inherit; }
+.nav-dropdown-toggle:hover, .nav-dropdown-toggle.nav-active { color: var(--navy); background: var(--navy-faint); }
+.nav-dropdown-toggle.nav-active { font-weight: 600; }
+.nav-dropdown-arrow { font-size: 10px; transition: transform 0.2s; }
+.nav-dropdown:hover .nav-dropdown-arrow { transform: rotate(180deg); }
+.nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 8px; min-width: 220px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); z-index: 999; }
+.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; text-decoration: none; color: var(--text-muted); font-size: 13.5px; font-weight: 500; border-radius: 8px; transition: all 0.15s; }
+.nav-dropdown-item:hover { color: var(--navy); background: var(--navy-faint); }
+.nav-dropdown-item.nav-active { color: var(--navy); background: var(--navy-faint); font-weight: 600; }
+.nav-dropdown-item-icon { font-size: 16px; }
+.nav-dropdown-item-text { display: flex; flex-direction: column; }
+.nav-dropdown-item-label { font-size: 13px; font-weight: 600; color: inherit; }
+.nav-dropdown-item-sub { font-size: 11px; color: var(--text-dim); margin-top: 1px; }
+
+
+
+
+
+
+
+
+</style>
+
+</head>
+<body>
+
+</div>
+
+</div>
+<nav>
+  <button onclick="sbOpen()" style="display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:#f5f4f1;border:1px solid #e2ddd6;border-radius:8px;margin-right:4px" aria-label="Menü">
+  <span style="display:block;width:18px;height:2px;background:#5c564e;border-radius:2px"></span>
+  <span style="display:block;width:18px;height:2px;background:#5c564e;border-radius:2px"></span>
+  <span style="display:block;width:18px;height:2px;background:#5c564e;border-radius:2px"></span>
+</button>
+  <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">G</div>
+      <div>
+        <div class="nav-logo-text">Garage<span>Invest</span></div>
+        <div style="font-size:10px;color:var(--text-dim);font-weight:500;letter-spacing:0.3px;margin-top:1px">Immobilien-Kapitalanlage</div>
+      </div>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="nrw.html">Städte</a></li>
+    <li><a href="ratgeber.html">Ratgeber</a></li>
+    <li><a href="angebote.html">Angebote</a></li>
+    <li><a href="ueber-uns.html">Über uns</a></li>
+    <li class="nav-dropdown">
+      <button class="nav-dropdown-toggle">Tools <span class="nav-dropdown-arrow">▾</span></button>
+      <div class="nav-dropdown-menu">
+        <a style="color:#0f2444;background:rgba(15,36,68,0.1);font-weight:700;border-radius:8px;padding:6px 12px" href="garagen-renditerechner.html" class="nav-dropdown-item">
+          <span class="nav-dropdown-item-icon">🧮</span>
+          <span class="nav-dropdown-item-text">
+            <span class="nav-dropdown-item-label">Renditerechner</span>
+            <span class="nav-dropdown-item-sub">Lohnt sich das Objekt?</span>
+          </span>
+        </a>
+        <a href="finanzierungsrechner.html" class="nav-dropdown-item">
+          <span class="nav-dropdown-item-icon">💳</span>
+          <span class="nav-dropdown-item-text">
+            <span class="nav-dropdown-item-label">Finanzierungsrechner</span>
+            <span class="nav-dropdown-item-sub">Lohnt sich ein Kredit?</span>
+          </span>
+        </a>
+      </div>
+    </li>
+    <li><a href="anbieter-vergleich.html">Anbieter</a></li>
+  </ul>
+</nav>
+<div style="height:64px"></div>
+
+
+</div>
+
+<div class="page-wrap">
+  <div class="page-header animate">
+    <div class="page-tag">🧮 Kostenloses Tool</div>
+    <h1>Garagen <em>Renditerechner</em></h1>
+    <p class="page-desc">Berechne Brutto-, Netto- und Nachsteuer-Rendite für jeden Stellplatz oder jede Garage – sofort, kostenlos, ohne Anmeldung.</p>
+  </div>
+
+  <div class="calc-grid animate">
+    <!-- Kaufpreis & Kosten -->
+    <div class="calc-panel">
+      <div class="panel-title">💶 Kaufpreis & Nebenkosten</div>
+      <div class="field">
+        <label>Kaufpreis (€)</label>
+        <input type="number" id="kaufpreis" value="18000" min="1000" max="500000" oninput="calc()">
+      </div>
+      <div class="field">
+        <label>Kaufnebenkosten (%)</label>
+        <input type="number" id="nebenkosten" value="7.5" min="0" max="20" step="0.1" oninput="calc()">
+        <div class="field-hint">Notar + Grunderwerbsteuer NRW (6,5 %) + ggf. Makler</div>
+      </div>
+      <div class="field">
+        <label>Instandhaltungsrücklage (€/Jahr)</label>
+        <input type="number" id="ruecklage" value="200" min="0" max="5000" oninput="calc()">
+      </div>
+      <div class="field">
+        <label>Leerstand</label>
+        <div class="slider-wrap">
+          <div class="slider-header">
+            <span style="font-size:13px;color:var(--text-muted)">Anteil leer stehender Monate</span>
+            <span class="slider-val" id="leerstand-val">5%</span>
+          </div>
+          <input type="range" id="leerstand" min="0" max="30" value="5" step="1" oninput="updateSlider(this,'leerstand-val','%'); calc()">
+        </div>
+      </div>
+    </div>
+
+    <!-- Einnahmen & Kosten -->
+    <div class="calc-panel">
+      <div class="panel-title">🏠 Einnahmen & laufende Kosten</div>
+      <div class="field">
+        <label>Monatsmiete (€)</label>
+        <input type="number" id="miete" value="80" min="10" max="1000" oninput="calc()">
+      </div>
+      <div class="field">
+        <label>Hausgeld (€/Monat)</label>
+        <input type="number" id="hausgeld" value="30" min="0" max="300" oninput="calc()">
+        <div class="field-hint">Bei Tiefgaragen in WEG typisch 20–60 €</div>
+      </div>
+      <div class="field">
+        <label>Verwaltungskosten (€/Jahr)</label>
+        <input type="number" id="verwaltung" value="0" min="0" max="2000" oninput="calc()">
+      </div>
+      <div class="field">
+        <label>Persönlicher Steuersatz</label>
+        <div class="slider-wrap">
+          <div class="slider-header">
+            <span style="font-size:13px;color:var(--text-muted)">Einkommensteuer auf Mietgewinne</span>
+            <span class="slider-val" id="steuer-val">30%</span>
+          </div>
+          <input type="range" id="steuer" min="0" max="45" value="30" step="1" oninput="updateSlider(this,'steuer-val','%'); calc()">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ergebnisse -->
+  <div class="results-panel animate">
+    <div class="results-title">📊 Deine Rendite auf einen Blick</div>
+    <div class="metrics-grid">
+      <div class="metric">
+        <div class="metric-label">Brutto-Rendite</div>
+        <div class="metric-value" id="r-brutto">–</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Netto-Rendite</div>
+        <div class="metric-value" id="r-netto">–</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Nach Steuern</div>
+        <div class="metric-value" id="r-steuer">–</div>
+      </div>
+    </div>
+    <div class="metrics-grid-2">
+      <div class="metric sm">
+        <div class="metric-label">Einnahmen/Jahr</div>
+        <div class="metric-value" id="r-einnahmen">–</div>
+      </div>
+      <div class="metric sm">
+        <div class="metric-label">Kosten/Jahr</div>
+        <div class="metric-value" id="r-kosten">–</div>
+      </div>
+      <div class="metric sm">
+        <div class="metric-label">Gesamtinvestment</div>
+        <div class="metric-value" id="r-gesamt">–</div>
+      </div>
+    </div>
+    <div class="verdict" id="verdict"></div>
+    <div class="bar-section">
+      <div class="bar-row">
+        <div class="bar-label">Einnahmen</div>
+        <div class="bar-bg"><div class="bar-fill green" id="bar-ein" style="width:0%"></div></div>
+        <div class="bar-num" id="num-ein">–</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Kosten</div>
+        <div class="bar-bg"><div class="bar-fill red" id="bar-kos" style="width:0%"></div></div>
+        <div class="bar-num" id="num-kos">–</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Überschuss</div>
+        <div class="bar-bg"><div class="bar-fill navy" id="bar-ue" style="width:0%"></div></div>
+        <div class="bar-num" id="num-ue">–</div>
+      </div>
+      <div class="amort-row">
+        <div class="amort-label">⏱ Amortisation</div>
+        <div class="bar-bg"><div class="bar-fill navy" id="bar-amort" style="width:0%"></div></div>
+        <div class="amort-num" id="num-amort">–</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hint-box animate">
+    <strong>💡 So nutzt du den Rechner richtig:</strong> Gib realistische Werte ein – nicht die Best-Case-Zahlen des Verkäufers. Rechne mit mindestens 5 % Leerstand und dem tatsächlichen Hausgeld laut Abrechnung. Die Brutto-Rendite ist der Vergleichswert den Anbieter nennen – die Nachsteuer-Rendite ist was du wirklich verdienst.
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="sidebar-logo-icon" style="width:26px;height:26px;font-size:13px">G</div>
+      <span class="footer-copy">© 2026 GarageInvest · Alle Angaben ohne Gewähr · Keine Anlageberatung</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="impressum.html">Impressum</a></li>
+      <li><a href="datenschutz.html">Datenschutz</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+function updateSlider(el, valId, suffix) {
+  document.getElementById(valId).textContent = el.value + suffix;
+}
+function fmt(n, decimals=2) {
+  return n.toLocaleString('de-DE', {minimumFractionDigits: decimals, maximumFractionDigits: decimals});
+}
+function fmtEur(n) { return fmt(n, 0) + ' €'; }
+function fmtPct(n) { return fmt(n, 2) + ' %'; }
+function setMetric(id, val, cls='') {
+  const el = document.getElementById(id);
+  el.textContent = val;
+  el.className = 'metric-value' + (cls ? ' ' + cls : '');
+}
+function calc() {
+  const kaufpreis    = parseFloat(document.getElementById('kaufpreis').value) || 0;
+  const nebenkPct    = parseFloat(document.getElementById('nebenkosten').value) || 0;
+  const ruecklage    = parseFloat(document.getElementById('ruecklage').value) || 0;
+  const leerstandPct = parseFloat(document.getElementById('leerstand').value) || 0;
+  const miete        = parseFloat(document.getElementById('miete').value) || 0;
+  const hausgeld     = parseFloat(document.getElementById('hausgeld').value) || 0;
+  const verwaltung   = parseFloat(document.getElementById('verwaltung').value) || 0;
+  const steuerPct    = parseFloat(document.getElementById('steuer').value) || 0;
+
+  const nebenkosten        = kaufpreis * nebenkPct / 100;
+  const gesamtinvest       = kaufpreis + nebenkosten;
+  const bruttoEinnahmen    = miete * 12;
+  const einnahmenNachLeerstand = bruttoEinnahmen * (1 - leerstandPct / 100);
+  const hausgeldJahr       = hausgeld * 12;
+  const gesamtkosten       = hausgeldJahr + ruecklage + verwaltung;
+  const bruttoRendite      = gesamtinvest > 0 ? (bruttoEinnahmen / gesamtinvest) * 100 : 0;
+  const ueberschuss        = einnahmenNachLeerstand - gesamtkosten;
+  const nettoRendite       = gesamtinvest > 0 ? (ueberschuss / gesamtinvest) * 100 : 0;
+  const steuerBetrag       = Math.max(0, ueberschuss) * steuerPct / 100;
+  const nachSteuer         = ueberschuss - steuerBetrag;
+  const nachSteuerRendite  = gesamtinvest > 0 ? (nachSteuer / gesamtinvest) * 100 : 0;
+  const amortJahre         = nachSteuer > 0 ? gesamtinvest / nachSteuer : null;
+
+  const bruttoColor = bruttoRendite >= 5 ? 'good' : bruttoRendite >= 3 ? '' : 'bad';
+  const nettoColor  = nettoRendite  >= 4 ? 'good' : nettoRendite  >= 2 ? '' : 'bad';
+  const steuerColor = nachSteuerRendite >= 3 ? 'good' : nachSteuerRendite >= 1.5 ? '' : 'bad';
+
+  setMetric('r-brutto',    fmtPct(bruttoRendite),      bruttoColor);
+  setMetric('r-netto',     fmtPct(nettoRendite),        nettoColor);
+  setMetric('r-steuer',    fmtPct(nachSteuerRendite),   steuerColor);
+  setMetric('r-einnahmen', fmtEur(einnahmenNachLeerstand));
+  setMetric('r-kosten',    fmtEur(gesamtkosten));
+  setMetric('r-gesamt',    fmtEur(gesamtinvest));
+
+  const amortAnz = amortJahre ? fmt(amortJahre, 1) + ' J.' : '∞';
+  const amortBarW = amortJahre ? Math.min(100, (30 / amortJahre) * 100) : 0;
+  document.getElementById('bar-amort').style.width = amortBarW + '%';
+  document.getElementById('num-amort').textContent = amortAnz;
+
+  const maxEin = Math.max(einnahmenNachLeerstand, gesamtkosten, 1);
+  document.getElementById('bar-ein').style.width = (einnahmenNachLeerstand / maxEin * 100) + '%';
+  document.getElementById('num-ein').textContent = fmtEur(einnahmenNachLeerstand);
+  document.getElementById('bar-kos').style.width = (gesamtkosten / maxEin * 100) + '%';
+  document.getElementById('num-kos').textContent = fmtEur(gesamtkosten);
+  const ueW = Math.max(0, nachSteuer / maxEin * 100);
+  document.getElementById('bar-ue').style.width = ueW + '%';
+  document.getElementById('num-ue').textContent = fmtEur(nachSteuer);
+
+  const v = document.getElementById('verdict');
+  if (nachSteuerRendite >= 4) {
+    v.className = 'verdict good';
+    v.innerHTML = `<span class="verdict-icon">✅</span><span><strong>Starkes Investment!</strong> Mit ${fmtPct(nachSteuerRendite)} Netto-Rendite nach Steuern liegt dieses Objekt deutlich über dem Marktdurchschnitt. Amortisation in ca. ${amortAnz}.</span>`;
+  } else if (nachSteuerRendite >= 2.5) {
+    v.className = 'verdict ok';
+    v.innerHTML = `<span class="verdict-icon">⚖️</span><span><strong>Solides Investment.</strong> Mit ${fmtPct(nachSteuerRendite)} Netto-Rendite liegt dieses Objekt im marktüblichen Bereich. Amortisation in ca. ${amortAnz}.</span>`;
+  } else if (nachSteuerRendite >= 0) {
+    v.className = 'verdict bad';
+    v.innerHTML = `<span class="verdict-icon">⚠️</span><span><strong>Schwache Rendite.</strong> Mit nur ${fmtPct(nachSteuerRendite)} nach Steuern ist dieses Objekt kaum rentabel. Prüfe ob der Kaufpreis verhandelbar ist.</span>`;
+  } else {
+    v.className = 'verdict bad';
+    v.innerHTML = `<span class="verdict-icon">❌</span><span><strong>Verlustgeschäft!</strong> Die Kosten übersteigen die Einnahmen. Dieses Investment lohnt sich zu diesen Konditionen nicht.</span>`;
+  }
+}
+calc();
+</script>
+
+
+
+
+
+<!-- ═══ SIDEBAR START ═══ -->
+<div id="sb-ov" onclick="sbClose()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:1000"></div>
+<div id="sb" style="position:fixed;top:0;left:0;bottom:0;width:290px;background:#fff;border-right:1px solid #e2ddd6;z-index:1001;display:flex;flex-direction:column;box-shadow:4px 0 24px rgba(0,0,0,0.12);transform:translateX(-100%);transition:transform .3s ease;overflow-y:auto">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid #e2ddd6;flex-shrink:0">
+    <a href="index.html" style="display:flex;align-items:center;gap:9px;text-decoration:none">
+      <div style="width:26px;height:26px;background:#0f2444;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:13px;font-family:serif">G</div>
+      <span style="font-family:serif;font-size:15px;font-weight:700;color:#1a1814">Garage<span style="color:#0f2444">Invest</span></span>
+    </a>
+    <div onclick="sbClose()" style="cursor:pointer;width:28px;height:28px;background:#f5f4f1;border:1px solid #e2ddd6;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#5c564e;font-size:14px">✕</div>
+  </div>
+  <div style="padding:8px 0 16px;flex:1;overflow-y:auto">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Hauptseiten</div>
+    <a href="index.html" class="sb-item">🏠 Startseite</a>
+    <a href="angebote.html" class="sb-item">🔍 Aktuelle Angebote</a>
+    <a href="anbieter-vergleich.html" class="sb-item">⭐ Anbieter-Vergleich</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">🛠️ Tools &amp; Rechner</div>
+    <a href="garagen-renditerechner.html" style="display:block;padding:8px 15px;text-decoration:none;color:#0f2444;background:rgba(15,36,68,0.1);font-weight:700;border-left:3px solid #0f2444">🧮 Renditerechner</a>
+    <a href="finanzierungsrechner.html" class="sb-item">💳 Finanzierungsrechner</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Städte &amp; Märkte</div>
+    <a href="nrw.html" class="sb-item">🗺️ NRW Übersicht</a>
+    <a href="ruhrgebiet.html" class="sb-item">🏭 Ruhrgebiet</a>
+    <a href="essen.html" class="sb-item">📍 Essen</a>
+    <a href="duesseldorf.html" class="sb-item">📍 Düsseldorf</a>
+    <a href="duisburg.html" class="sb-item">📍 Duisburg</a>
+    <a href="koeln.html" class="sb-item">📍 Köln</a>
+    <a href="oberhausen.html" class="sb-item">📍 Oberhausen</a>
+    <a href="wuppertal.html" class="sb-item">📍 Wuppertal</a>
+    <a href="dinslaken.html" class="sb-item">📍 Dinslaken</a>
+    <a href="bochum.html" class="sb-item">📍 Bochum</a>
+    <a href="dortmund.html" class="sb-item">📍 Dortmund</a>
+    <a href="muelheim.html" class="sb-item">📍 Mülheim</a>
+    <a href="krefeld.html" class="sb-item">📍 Krefeld</a>
+    <a href="gelsenkirchen.html" class="sb-item">📍 Gelsenkirchen</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Ratgeber &amp; Wissen</div>
+    <a href="ratgeber.html" class="sb-item">📚 Alle Ratgeber</a>
+    <a href="ratgeber-einsteiger.html" class="sb-item">🏗️ Einsteiger-Guide</a>
+    <a href="ratgeber-steuern.html" class="sb-item">💰 Steuern</a>
+    <a href="ratgeber-kaufcheckliste.html" class="sb-item">✅ Kaufcheckliste</a>
+    <a href="ratgeber-finanzierung.html" class="sb-item">💳 Finanzierung</a>
+    <a href="ratgeber-skalierung.html" class="sb-item">📈 Skalierung</a>
+    <a href="faq.html" class="sb-item">❓ FAQ</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Blog</div>
+    <a href="blog.html" class="sb-item">✍️ Alle Artikel</a>
+    <a href="blog-5-fehler.html" class="sb-item">⚠️ 5 Fehler beim Kauf</a>
+    <a href="blog-mieter-finden.html" class="sb-item">🤝 Mieter finden</a>
+    <a href="blog-eauto-trend.html" class="sb-item">⚡ E-Auto Trend</a>
+  </div>
+  <a href="garagen-renditerechner.html" style="margin:12px;background:#0f2444;border-radius:10px;padding:12px 16px;text-decoration:none;color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;flex-shrink:0">🧮 Rendite berechnen →</a>
+</div>
+<style>
+.sb-item{display:block;padding:8px 18px;text-decoration:none;color:#5c564e;font-size:13.5px;font-weight:500}
+.sb-item:hover{background:rgba(15,36,68,.05);color:#0f2444}
+</style>
+<script>
+function sbOpen(){
+  document.getElementById('sb').style.transform='translateX(0)';
+  document.getElementById('sb-ov').style.display='block';
+  document.body.style.overflow='hidden';
+}
+function sbClose(){
+  document.getElementById('sb').style.transform='translateX(-100%)';
+  document.getElementById('sb-ov').style.display='none';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')sbClose();});
+</script>
+<!-- ═══ SIDEBAR END ═══ -->
+
+
+
+</body>
+</html>

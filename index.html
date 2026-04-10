@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+
+<meta charset="UTF-8">
+<meta name="description" content="Garagen und Stellplätze als Investment: Renditerechner, Marktberichte für NRW und Ratgeber für Einsteiger. Kostenlos und unabhängig.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="GarageInvest">
+<link rel="canonical" href="https://garageinvest.netlify.app/index.html">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://garageinvest.netlify.app/index.html">
+<meta property="og:title" content="GarageInvest – Smarter in Garagen & Stellplätze investieren">
+<meta property="og:description" content="Garagen und Stellplätze als Investment: Renditerechner, Marktberichte für NRW und Ratgeber für Einsteiger. Kostenlos und unabhängig.">
+<meta property="og:site_name" content="GarageInvest">
+<meta property="og:locale" content="de_DE">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GarageInvest – Smarter in Garagen & Stellplätze investieren">
+<meta name="twitter:description" content="Garagen und Stellplätze als Investment: Renditerechner, Marktberichte für NRW und Ratgeber für Einsteiger. Kostenlos und unabhängig.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GarageInvest – Smarter in Garagen & Stellplätze investieren</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f9f8f6;
+  --bg2: #f0eeea;
+  --surface: #ffffff;
+  --surface2: #f5f4f1;
+  --border: #e2ddd6;
+  --border2: #ccc8bf;
+  --navy: #0f2444;
+  --navy-dim: #1a3a6e;
+  --navy-faint: rgba(15,36,68,0.06);
+  --navy-mid: rgba(15,36,68,0.12);
+  --accent: #16a34a;
+  --accent-dim: #15803d;
+  --accent-faint: rgba(22,163,74,0.08);
+  --amber: #d97706;
+  --red: #dc2626;
+  --text: #1a1814;
+  --text-muted: #5c564e;
+  --text-dim: #9b9590;
+  --gold: #0f2444;
+  --gold-dim: #1a3a6e;
+  --gold-faint: rgba(15,36,68,0.06);
+  --green: #16a34a;
+  --radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* NOISE TEXTURE OVERLAY */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* AMBIENT GLOW */
+.glow-1 {
+  position: fixed;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+  top: -200px; left: -200px;
+  pointer-events: none;
+  z-index: 0;
+}
+.glow-2 {
+  position: fixed;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+  bottom: 10%; right: -100px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 48px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(15,14,12,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(46,44,40,0.5);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo-icon {
+  width: 30px; height: 30px;
+  background: var(--gold);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 900;
+  color: var(--bg);
+  font-family: "Fraunces", serif;
+}
+
+.nav-logo-text {
+  font-family: "Fraunces", serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+.nav-logo-text span { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+
+.nav-cta {
+  background: var(--gold) !important;
+  color: var(--bg) !important;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: 600 !important;
+  transition: opacity 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+@media (max-width: 680px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+}
+
+/* SECTIONS */
+section { position: relative; z-index: 1; }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+@media (max-width: 680px) {
+  .container { padding: 0 20px; }
+}
+
+/* ===== HERO ===== */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 64px;
+  overflow: hidden;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 100px 0 80px;
+}
+
+@media (max-width: 860px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold-faint);
+  border: 1px solid var(--gold-dim);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.1s ease forwards;
+}
+
+.hero-tag::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+h1.hero-title {
+  font-family: "Fraunces", serif;
+  font-size: clamp(42px, 5.5vw, 68px);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.2s ease forwards;
+}
+
+h1.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-desc {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  font-weight: 300;
+  margin-bottom: 40px;
+  max-width: 460px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.3s ease forwards;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.4s ease forwards;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: var(--bg);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 28px;
+  border-radius: 10px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.btn-secondary:hover { color: var(--text); }
+.btn-secondary::after { content: '↓'; }
+
+/* HERO STATS */
+.hero-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.5s ease forwards;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.stat-card:hover {
+  border-color: var(--gold-dim);
+  transform: translateY(-3px);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.stat-card:hover::before { opacity: 1; }
+
+.stat-icon { font-size: 22px; margin-bottom: 12px; }
+
+.stat-value {
+  font-family: "Fraunces", serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* DIVIDER */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 0 48px;
+}
+
+/* ===== HOW IT WORKS ===== */
+#how {
+  padding: 100px 0;
+}
+
+.section-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: "Fraunces", serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 16px;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 480px;
+  margin-bottom: 60px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+@media (max-width: 680px) {
+  .steps { grid-template-columns: 1fr; }
+}
+
+.step {
+  background: var(--surface);
+  padding: 36px 32px;
+  position: relative;
+  transition: background 0.3s;
+}
+.step:hover { background: var(--surface2); }
+
+.step-num {
+  font-family: "Fraunces", serif;
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: 20px;
+  transition: color 0.3s;
+}
+.step:hover .step-num { color: var(--gold-dim); }
+
+.step-title {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.step-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* ===== FEATURES ===== */
+#features {
+  padding: 100px 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 860px) {
+  .features-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .features-grid { grid-template-columns: 1fr; }
+}
+
+.feature-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.feature-card:hover {
+  border-color: var(--gold-dim);
+  transform: translateY(-4px);
+}
+
+.feature-icon {
+  width: 44px; height: 44px;
+  background: var(--gold-faint);
+  border: 1px solid var(--gold-dim);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.feature-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.feature-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* SOON BADGE */
+.soon {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  border: 1px solid var(--gold-dim);
+  border-radius: 4px;
+  padding: 2px 7px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* ===== CITIES ===== */
+#cities {
+  padding: 100px 0;
+}
+
+.cities-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 60px;
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .cities-layout { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.cities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.city-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  cursor: pointer;
+  transition: border-color 0.25s, transform 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.city-card:hover {
+  border-color: var(--gold-dim);
+  transform: translateY(-2px);
+}
+
+.city-card.featured {
+  border-color: var(--gold-dim);
+  background: linear-gradient(135deg, rgba(201,168,76,0.07), var(--surface));
+}
+
+.city-card.featured::after {
+  content: '★';
+  position: absolute;
+  top: 12px; right: 14px;
+  color: var(--gold);
+  font-size: 12px;
+}
+
+.city-name {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.city-price {
+  font-family: "Fraunces", serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+
+.city-yield {
+  font-size: 12px;
+  color: var(--green);
+  font-weight: 500;
+}
+
+.city-sub {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+/* ===== CTA ===== */
+#cta {
+  padding: 100px 0 120px;
+  text-align: center;
+}
+
+.cta-box {
+  background: var(--navy);
+  border: none;
+  border-radius: 20px;
+  padding: 72px 48px;
+  position: relative;
+  overflow: hidden;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 60%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+}
+
+.cta-box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.cta-title {
+  font-family: "Fraunces", serif;
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-title em { font-style: italic; color: rgba(255,255,255,0.75); }
+
+.cta-desc {
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--text-muted); }
+
+.footer-copy {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* TICKER */
+.ticker-wrap {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  padding: 12px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: inline-flex;
+  gap: 0;
+  animation: ticker 30s linear infinite;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 40px;
+  font-size: 13px;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.ticker-item .dot {
+  width: 4px; height: 4px;
+  background: var(--gold-dim);
+  border-radius: 50%;
+}
+
+.ticker-item .val {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── SIDEBAR ───────────────────────────────────────────── */
+
+
+
+
+
+
+
+
+
+
+.sidebar-close:hover { background: var(--navy-faint); color: var(--navy); border-color: var(--navy); }
+
+
+
+
+
+
+
+
+
+
+.sidebar-cta:hover { opacity: 0.88; }
+/* Hamburger Button */
+
+
+
+
+
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: "Plus Jakarta Sans", sans-serif; overflow-x: hidden; }
+body::after { display: none; }
+
+/* ── NAV ── */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(249,248,246,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-icon { width: 32px; height: 32px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 900; color: #fff; font-family: "Fraunces", serif; }
+.nav-logo-text { font-family: "Fraunces", serif; font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+.nav-logo-text span { color: var(--navy); }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+.nav-links a:hover { color: var(--text); background: var(--navy-faint); }
+.nav-cta { background: var(--navy) !important; color: #fff !important; padding: 8px 16px !important; border-radius: 8px; font-weight: 600 !important; }
+.nav-cta:hover { background: var(--navy-dim) !important; }
+@media (max-width: 680px) { nav { padding: 0 16px; } .nav-links { display: none; } }
+
+/* ── HAMBURGER ── */
+
+
+
+
+
+/* ── SIDEBAR ── */
+
+
+
+
+
+
+
+
+
+
+.sidebar-close:hover { background: var(--navy-faint); color: var(--navy); border-color: var(--navy); }
+
+
+
+
+
+
+
+
+
+
+.sidebar-cta:hover { background: var(--navy-dim); }
+
+/* ── TYPOGRAPHY ── */
+.playfair, h1, h2, h3, .article-title, .page-title, .section-title, .cta-title { font-family: "Fraunces", serif !important; }
+
+/* ── CARDS & PANELS ── */
+.kpi-card, .panel, .info-box, .warn-box, .green-box, .article-cta, .related-card, .city-card, .article-card, .step-block, .highlight-box, .score-box, .data-box {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.kpi-card:hover, .related-card:hover, .city-card:hover, .article-card:hover { box-shadow: var(--shadow); }
+
+/* ── INFO BOXES ── */
+.info-box { border-left-color: var(--navy) !important; }
+.info-box-title { color: var(--navy) !important; }
+.warn-box { background: #fef2f2 !important; border-left-color: var(--red) !important; border-color: #fecaca !important; }
+.warn-box-title { color: var(--red) !important; }
+.green-box { background: #f0fdf4 !important; border-color: #bbf7d0 !important; border-left-color: var(--accent) !important; }
+.green-box-title { color: var(--accent-dim) !important; }
+.highlight-box { background: var(--navy-faint) !important; border-color: var(--navy-mid) !important; }
+.highlight-box strong { color: var(--navy) !important; }
+
+/* ── BUTTONS ── */
+.btn-p, .btn-primary { background: var(--navy) !important; color: #fff !important; border: none !important; }
+.btn-p:hover, .btn-primary:hover { background: var(--navy-dim) !important; opacity: 1 !important; }
+.btn-g, .btn-secondary { border-color: var(--border2) !important; color: var(--text-muted) !important; }
+.btn-g:hover, .btn-secondary:hover { border-color: var(--navy) !important; color: var(--navy) !important; background: var(--navy-faint) !important; }
+
+/* ── SCORES & BADGES ── */
+.score-box { border-color: var(--navy-mid) !important; background: var(--navy-faint) !important; }
+.score-value { color: var(--navy) !important; }
+.kpi-value { color: var(--navy) !important; }
+.article-tag, .page-tag, .panel-title, .section-label, .related-tag, .article-card-tag { color: var(--navy) !important; }
+
+/* ── TABLES ── */
+.data-table th { background: var(--surface2) !important; color: var(--text-dim) !important; border-bottom-color: var(--border2) !important; }
+.data-table tr:hover td { background: var(--navy-faint) !important; }
+
+/* ── ARTICLE CTA ── */
+.article-cta { background: var(--navy-faint) !important; border-color: var(--navy-mid) !important; }
+.article-cta::before { background: linear-gradient(90deg, transparent, var(--navy), transparent) !important; }
+
+/* ── NEWSLETTER ── */
+.newsletter-box { background: var(--navy) !important; border-color: var(--navy-dim) !important; color: #fff !important; }
+.newsletter-box::before { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent) !important; }
+.newsletter-title { color: #fff !important; }
+.newsletter-desc { color: rgba(255,255,255,0.75) !important; }
+.newsletter-input { background: rgba(255,255,255,0.1) !important; border-color: rgba(255,255,255,0.2) !important; color: #fff !important; }
+.newsletter-input::placeholder { color: rgba(255,255,255,0.4) !important; }
+.newsletter-input:focus { border-color: rgba(255,255,255,0.5) !important; }
+.newsletter-btn { background: #fff !important; color: var(--navy) !important; }
+.newsletter-fine { color: rgba(255,255,255,0.4) !important; }
+
+/* ── PORTAL BUTTONS ── */
+.portal-btn { background: var(--surface) !important; border-color: var(--border) !important; box-shadow: var(--shadow-sm); }
+.portal-btn:hover { border-color: var(--navy) !important; box-shadow: var(--shadow) !important; }
+
+/* ── MISC ── */
+.todo-box { background: #fffbeb !important; border-color: #fde68a !important; }
+.todo-box strong { color: var(--amber) !important; }
+.placeholder { background: #fffbeb !important; border-color: #fde68a !important; color: var(--amber) !important; }
+.breadcrumb a:hover { color: var(--navy) !important; }
+.faq-q::after { color: var(--navy) !important; }
+.article-body a { color: var(--navy) !important; }
+.article-body ul li::before, .article-body ol li::before { color: var(--navy) !important; }
+.info-list li { border-bottom-color: var(--border) !important; }
+
+/* ── FOOTER ── */
+footer { background: var(--navy) !important; border-top: none !important; }
+.footer-copy { color: rgba(255,255,255,0.5) !important; }
+.footer-links a { color: rgba(255,255,255,0.5) !important; }
+.footer-links a:hover { color: #fff !important; }
+.nav-logo-icon[style*="26px"] { background: rgba(255,255,255,0.15) !important; color: #fff !important; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.animate { opacity: 0; animation: fadeUp 0.5s ease forwards; }
+.d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.15s; } .d3 { animation-delay: 0.25s; }
+
+/* ── GOLD VARS REMAPPED ── */
+a[style*="color:var(--gold)"] { color: var(--navy) !important; }
+.cta-actions .btn-primary { background: #fff !important; color: var(--navy) !important; font-weight: 700 !important; }
+.cta-actions .btn-primary:hover { background: var(--bg2) !important; }
+.cta-actions .btn-secondary { background: rgba(255,255,255,0.1) !important; color: #fff !important; border-color: rgba(255,255,255,0.25) !important; }
+.cta-actions .btn-secondary:hover { background: rgba(255,255,255,0.18) !important; border-color: rgba(255,255,255,0.4) !important; }
+/* cta-btn-override */
+/* NEW_BASE_INJECTED */
+
+/* ── ACTIVE NAV + DROPDOWN ── */
+.nav-links a.nav-active { color: var(--navy) !important; background: var(--navy-faint) !important; font-weight: 600 !important; }
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle { display: flex; align-items: center; gap: 5px; color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: color 0.2s, background 0.2s; cursor: pointer; border: none; background: none; font-family: inherit; }
+.nav-dropdown-toggle:hover, .nav-dropdown-toggle.nav-active { color: var(--navy); background: var(--navy-faint); }
+.nav-dropdown-toggle.nav-active { font-weight: 600; }
+.nav-dropdown-arrow { font-size: 10px; transition: transform 0.2s; }
+.nav-dropdown:hover .nav-dropdown-arrow { transform: rotate(180deg); }
+.nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 8px; min-width: 220px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); z-index: 999; }
+.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-item { display: flex; align-items: center; gap: 10px; padding: 10px 12px; text-decoration: none; color: var(--text-muted); font-size: 13.5px; font-weight: 500; border-radius: 8px; transition: all 0.15s; }
+.nav-dropdown-item:hover { color: var(--navy); background: var(--navy-faint); }
+.nav-dropdown-item.nav-active { color: var(--navy); background: var(--navy-faint); font-weight: 600; }
+.nav-dropdown-item-icon { font-size: 16px; }
+.nav-dropdown-item-text { display: flex; flex-direction: column; }
+.nav-dropdown-item-label { font-size: 13px; font-weight: 600; color: inherit; }
+.nav-dropdown-item-sub { font-size: 11px; color: var(--text-dim); margin-top: 1px; }
+
+
+
+
+
+
+
+
+</style>
+
+</head>
+<body>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<div class="glow-1"></div>
+<div class="glow-2"></div>
+
+<!-- NAV -->
+<nav>
+  
+  <button onclick="sbOpen()" style="display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:#f5f4f1;border:1px solid #e2ddd6;border-radius:8px;margin-right:4px" aria-label="Menü">
+  <span style="display:block;width:18px;height:2px;background:#5c564e;border-radius:2px"></span>
+  <span style="display:block;width:18px;height:2px;background:#5c564e;border-radius:2px"></span>
+  <span style="display:block;width:18px;height:2px;background:#5c564e;border-radius:2px"></span>
+</button>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">G</div>
+    <div class="nav-logo-text">Garage<span>Invest</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" style="color:#0f2444;background:rgba(15,36,68,0.1);font-weight:700;border-radius:8px">Startseite</a></li>
+    <li><a href="nrw.html">Städte</a></li>
+    <li><a href="ratgeber.html">Ratgeber</a></li>
+    <li><a href="angebote.html">Angebote</a></li>
+    <li><a href="ueber-uns.html">Über uns</a></li>
+    <li class="nav-dropdown">
+      <button class="nav-dropdown-toggle">Tools <span class="nav-dropdown-arrow">▾</span></button>
+      <div class="nav-dropdown-menu">
+        <a href="garagen-renditerechner.html" class="nav-dropdown-item">
+          <span class="nav-dropdown-item-icon">🧮</span>
+          <span class="nav-dropdown-item-text">
+            <span class="nav-dropdown-item-label">Renditerechner</span>
+            <span class="nav-dropdown-item-sub">Lohnt sich das Objekt?</span>
+          </span>
+        </a>
+        <a href="finanzierungsrechner.html" class="nav-dropdown-item">
+          <span class="nav-dropdown-item-icon">💳</span>
+          <span class="nav-dropdown-item-text">
+            <span class="nav-dropdown-item-label">Finanzierungsrechner</span>
+            <span class="nav-dropdown-item-sub">Lohnt sich ein Kredit?</span>
+          </span>
+        </a>
+      </div>
+    </li>
+    <li><a href="anbieter-vergleich.html">Anbieter</a></li>
+  </ul>
+<span style="position:absolute;left:50%;transform:translateX(-50%);font-size:12px;font-weight:600;color:var(--text-muted);letter-spacing:0.5px;white-space:nowrap">🏗️ &nbsp;Deine Immobilien-Kapitalanlage ab 8.000 €</span>
+</nav>
+
+<!-- TICKER -->
+<div style="margin-top:64px" class="ticker-wrap">
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div style="display:inline-flex;align-items:center;gap:8px;background:var(--navy-faint);border:1px solid var(--navy-mid);border-radius:20px;padding:6px 16px;font-size:12px;font-weight:600;color:var(--navy);margin-bottom:20px;letter-spacing:0.3px">
+          🏗️ &nbsp;Garagen &amp; Stellplätze als Kapitalanlage
+        </div>
+        <h1 class="hero-title">
+          Investiere <em>smarter</em><br>in Garagen &<br>Stellplätze.
+        </h1>
+        <p class="hero-desc">
+          Der erste Ratgeber und Analysetool speziell für Garagen- und Stellplatz-Investoren in Deutschland. Rendite berechnen, Anbieter vergleichen, Märkte analysieren.
+        </p>
+        <div class="hero-actions">
+          <a href="garagen-renditerechner.html" class="btn-primary">
+            Rendite berechnen →
+          </a>
+          <a href="#how" class="btn-secondary">Mehr erfahren&nbsp;</a>
+        </div>
+      </div>
+
+      <div class="hero-image" style="flex:1;min-width:0;display:flex;align-items:center;justify-content:center">
+        <div style="width:100%;max-width:420px;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(15,36,68,0.15);border:1px solid var(--border)">
+          <img src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=840&q=80&auto=format&fit=crop" alt="Tiefgarage Investment" style="width:100%;height:280px;object-fit:cover;display:block">
+          <div style="background:var(--navy);padding:20px 24px;display:flex;align-items:center;gap:16px">
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:4px">Typische Rendite</div>
+              <div style="font-family:'Fraunces',serif;font-size:28px;font-weight:900;color:#fff">4–7 %</div>
+            </div>
+            <div style="width:1px;height:40px;background:rgba(255,255,255,0.15)"></div>
+            <div style="flex:1">
+              <div style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:4px">Einstieg ab</div>
+              <div style="font-family:'Fraunces',serif;font-size:28px;font-weight:900;color:#fff">8.000 €</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-stats" style="display:none">
+        <div class="stat-card">
+          <div class="stat-icon">🏗️</div>
+          <div class="stat-value">5 Mio.</div>
+          <div class="stat-label">Garagen & Stellplätze in Deutschland</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📈</div>
+          <div class="stat-value">4–7%</div>
+          <div class="stat-label">Typische Brutto-Rendite p.a.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">💶</div>
+          <div class="stat-value">ab 10k</div>
+          <div class="stat-label">Einstieg bereits möglich</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⚙️</div>
+          <div class="stat-value">~0h</div>
+          <div class="stat-label">Verwaltungsaufwand pro Monat</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">Schritt für Schritt</div>
+      <h2 class="section-title">So einfach investierst<br>du in Stellplätze</h2>
+      <p class="section-subtitle">Vom ersten Blick auf ein Objekt bis zum ersten Mieteingang – wir begleiten dich durch jeden Schritt.</p>
+    </div>
+
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Objekt finden</div>
+        <div class="step-desc">Nutze unsere Stadtübersichten, Marktpreise und Anbieter-Vergleiche um das richtige Objekt zu finden – von Immoscout bis Zwangsversteigerung.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Rendite prüfen</div>
+        <div class="step-desc">Gib Kaufpreis, Miete und Kosten in unseren Renditerechner ein und sieh sofort ob sich das Investment lohnt – inklusive Steuer und Leerstand.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Kaufen & vermieten</div>
+        <div class="step-desc">Notartermin, Grundbuch, fertig. Mit einem guten Stellplatz hast du einen Mieter der automatisch zahlt – ohne Mietrechtsstress und Nebenkostenabrechnung.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">Was wir bieten</div>
+      <h2 class="section-title">Alles was du als<br>Investor brauchst</h2>
+      <p class="section-subtitle">Kein anderes Portal bündelt diese Tools speziell für Garagen- und Stellplatz-Investoren.</p>
+    </div>
+
+    <div class="features-grid reveal">
+      <div class="feature-card">
+        <div class="feature-icon">🧮</div>
+        <div class="feature-title">Renditerechner</div>
+        <div class="feature-desc">Brutto-, Netto- und Nachsteuer-Rendite auf einen Blick. Mit Leerstand, Hausgeld, Verwaltungskosten und Amortisation.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⭐</div>
+        <div class="feature-title">Anbieter-Bewertungen</div>
+        <div class="feature-desc">Speicher-Box, BOX!T & Co. unabhängig bewertet. Seriosität, Konditionen und echte Investoren-Erfahrungen.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗺️</div>
+        <div class="feature-title">Stadtvergleich <span class="soon">Bald</span></div>
+        <div class="feature-desc">Marktpreise, Mietrenditen und Nachfragesituation für über 50 deutsche Städte auf einen Blick vergleichen.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <div class="feature-title">Objekt-Alerts <span class="soon">Bald</span></div>
+        <div class="feature-desc">Werde sofort benachrichtigt wenn ein Stellplatz in deiner Wunsch-Stadt zu deinem Wunschpreis auftaucht.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <div class="feature-title">Marktberichte <span class="soon">Bald</span></div>
+        <div class="feature-desc">Monatliche Analysen zur Preisentwicklung, Renditetrends und neuen Investment-Hotspots im deutschen Garakenmarkt.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <div class="feature-title"><a href="finanzierungsrechner.html" style="color:inherit;text-decoration:none">Finanzierungsrechner</a></div>
+        <div class="feature-desc">Lohnt sich ein Kredit für dein Investment? Berechne sofort ob die Rendite die Zinskosten übersteigt.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CITIES -->
+<section id="cities">
+  <div class="container">
+    <div class="cities-layout">
+      <div class="reveal">
+        <div class="section-tag">Marktübersicht</div>
+        <h2 class="section-title">Stellplatz-Märkte im Überblick</h2>
+        <p class="section-subtitle">Typische Kaufpreise und Renditen nach Stadt – damit du sofort siehst wo sich ein Investment lohnt.</p>
+        <a href="nrw.html" class="btn-primary" style="margin-top:8px; display:inline-flex">Alle NRW-Städte →</a>
+      </div>
+
+      <div class="cities-grid reveal">
+        <a href="dinslaken.html" class="city-card featured" style="text-decoration:none;color:inherit">
+          <div class="city-name">Dinslaken</div>
+          <div class="city-price">10–20k</div>
+          <div class="city-yield">↑ 5–6% Rendite</div>
+          <div class="city-sub">Kreis Wesel · Ruhrgebiet</div>
+        </a>
+        <a href="duisburg.html" class="city-card" style="text-decoration:none;color:inherit">
+          <div class="city-name">Duisburg</div>
+          <div class="city-price">10–22k</div>
+          <div class="city-yield">↑ 5–6% Rendite</div>
+          <div class="city-sub">Großstadt · Ruhrgebiet</div>
+        </a>
+        <a href="essen.html" class="city-card" style="text-decoration:none;color:inherit">
+          <div class="city-name">Essen</div>
+          <div class="city-price">10–25k</div>
+          <div class="city-yield">↑ 5–7% Rendite</div>
+          <div class="city-sub">Ruhrgebiet · Score A</div>
+        </a>
+        <a href="duesseldorf.html" class="city-card" style="text-decoration:none;color:inherit">
+          <div class="city-name">Düsseldorf</div>
+          <div class="city-price">20–55k</div>
+          <div class="city-yield">→ 4–6% Rendite</div>
+          <div class="city-sub">Landeshauptstadt NRW</div>
+        </a>
+        <a href="koeln.html" class="city-card" style="text-decoration:none;color:inherit">
+          <div class="city-name">Köln</div>
+          <div class="city-price">18–50k</div>
+          <div class="city-yield">→ 4–6% Rendite</div>
+          <div class="city-sub">Metropole · 1 Mio. EW</div>
+        </a>
+        <a href="ruhrgebiet.html" class="city-card" style="text-decoration:none;color:inherit;background:var(--gold-faint);border-color:var(--gold-dim)">
+          <div class="city-name">+ 7 weitere</div>
+          <div class="city-price">ab 8.000 €</div>
+          <div class="city-yield">↑ bis 7% Rendite</div>
+          <div class="city-sub">Alle Ruhrgebiet-Städte →</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h2 class="cta-title">Bereit für dein <em>erstes</em><br>Stellplatz-Investment?</h2>
+      <p class="cta-desc">Starte jetzt mit unserem kostenlosen Renditerechner und sieh in Sekunden ob sich ein Objekt für dich lohnt.</p>
+      <div class="cta-actions">
+        <a href="garagen-renditerechner.html" class="btn-primary">Renditerechner öffnen →</a>
+        <a href="#how" class="btn-secondary">Nochmal erklären&nbsp;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="nav-logo-icon" style="width:26px;height:26px;font-size:13px">G</div>
+        <span class="footer-copy">© 2026 GarageInvest · Alle Angaben ohne Gewähr</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li><a href="#">Kontakt</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+// TICKER
+const tickerData = [
+  { city: 'Dinslaken', price: '15.000 €', yield: '5,2%' },
+  { city: 'Essen', price: '12.000 €', yield: '6,1%' },
+  { city: 'Duisburg', price: '14.000 €', yield: '5,5%' },
+  { city: 'Düsseldorf', price: '32.000 €', yield: '3,8%' },
+  { city: 'Dortmund', price: '11.000 €', yield: '5,8%' },
+  { city: 'Köln', price: '38.000 €', yield: '3,4%' },
+  { city: 'München', price: '62.000 €', yield: '2,9%' },
+  { city: 'Hamburg', price: '28.000 €', yield: '4,1%' },
+  { city: 'Berlin', price: '22.000 €', yield: '4,6%' },
+];
+
+const track = document.getElementById('ticker');
+let html = '';
+for (let i = 0; i < 2; i++) {
+  tickerData.forEach(d => {
+    html += `<span class="ticker-item"><span class="dot"></span>${d.city} <span class="val">${d.price}</span> · <span class="val">${d.yield} Rendite</span></span>`;
+  });
+}
+track.innerHTML = html;
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+
+
+
+
+<!-- ═══ SIDEBAR START ═══ -->
+<div id="sb-ov" onclick="sbClose()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:1000"></div>
+<div id="sb" style="position:fixed;top:0;left:0;bottom:0;width:290px;background:#fff;border-right:1px solid #e2ddd6;z-index:1001;display:flex;flex-direction:column;box-shadow:4px 0 24px rgba(0,0,0,0.12);transform:translateX(-100%);transition:transform .3s ease;overflow-y:auto">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid #e2ddd6;flex-shrink:0">
+    <a href="index.html" style="display:flex;align-items:center;gap:9px;text-decoration:none">
+      <div style="width:26px;height:26px;background:#0f2444;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:13px;font-family:serif">G</div>
+      <span style="font-family:serif;font-size:15px;font-weight:700;color:#1a1814">Garage<span style="color:#0f2444">Invest</span></span>
+    </a>
+    <div onclick="sbClose()" style="cursor:pointer;width:28px;height:28px;background:#f5f4f1;border:1px solid #e2ddd6;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#5c564e;font-size:14px">✕</div>
+  </div>
+  <div style="padding:8px 0 16px;flex:1;overflow-y:auto">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Hauptseiten</div>
+    <a href="index.html" style="display:block;padding:8px 15px;text-decoration:none;color:#0f2444;background:rgba(15,36,68,0.1);font-weight:700;border-left:3px solid #0f2444">🏠 Startseite</a>
+    <a href="angebote.html" class="sb-item">🔍 Aktuelle Angebote</a>
+    <a href="anbieter-vergleich.html" class="sb-item">⭐ Anbieter-Vergleich</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">🛠️ Tools &amp; Rechner</div>
+    <a href="garagen-renditerechner.html" class="sb-item">🧮 Renditerechner</a>
+    <a href="finanzierungsrechner.html" class="sb-item">💳 Finanzierungsrechner</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Städte &amp; Märkte</div>
+    <a href="nrw.html" class="sb-item">🗺️ NRW Übersicht</a>
+    <a href="ruhrgebiet.html" class="sb-item">🏭 Ruhrgebiet</a>
+    <a href="essen.html" class="sb-item">📍 Essen</a>
+    <a href="duesseldorf.html" class="sb-item">📍 Düsseldorf</a>
+    <a href="duisburg.html" class="sb-item">📍 Duisburg</a>
+    <a href="koeln.html" class="sb-item">📍 Köln</a>
+    <a href="oberhausen.html" class="sb-item">📍 Oberhausen</a>
+    <a href="wuppertal.html" class="sb-item">📍 Wuppertal</a>
+    <a href="dinslaken.html" class="sb-item">📍 Dinslaken</a>
+    <a href="bochum.html" class="sb-item">📍 Bochum</a>
+    <a href="dortmund.html" class="sb-item">📍 Dortmund</a>
+    <a href="muelheim.html" class="sb-item">📍 Mülheim</a>
+    <a href="krefeld.html" class="sb-item">📍 Krefeld</a>
+    <a href="gelsenkirchen.html" class="sb-item">📍 Gelsenkirchen</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Ratgeber &amp; Wissen</div>
+    <a href="ratgeber.html" class="sb-item">📚 Alle Ratgeber</a>
+    <a href="ratgeber-einsteiger.html" class="sb-item">🏗️ Einsteiger-Guide</a>
+    <a href="ratgeber-steuern.html" class="sb-item">💰 Steuern</a>
+    <a href="ratgeber-kaufcheckliste.html" class="sb-item">✅ Kaufcheckliste</a>
+    <a href="ratgeber-finanzierung.html" class="sb-item">💳 Finanzierung</a>
+    <a href="ratgeber-skalierung.html" class="sb-item">📈 Skalierung</a>
+    <a href="faq.html" class="sb-item">❓ FAQ</a>
+    <hr style="border:none;border-top:1px solid #e2ddd6;margin:6px 18px">
+    <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#9b9590;padding:12px 18px 4px">Blog</div>
+    <a href="blog.html" class="sb-item">✍️ Alle Artikel</a>
+    <a href="blog-5-fehler.html" class="sb-item">⚠️ 5 Fehler beim Kauf</a>
+    <a href="blog-mieter-finden.html" class="sb-item">🤝 Mieter finden</a>
+    <a href="blog-eauto-trend.html" class="sb-item">⚡ E-Auto Trend</a>
+  </div>
+  <a href="garagen-renditerechner.html" style="margin:12px;background:#0f2444;border-radius:10px;padding:12px 16px;text-decoration:none;color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;flex-shrink:0">🧮 Rendite berechnen →</a>
+</div>
+<style>
+.sb-item{display:block;padding:8px 18px;text-decoration:none;color:#5c564e;font-size:13.5px;font-weight:500}
+.sb-item:hover{background:rgba(15,36,68,.05);color:#0f2444}
+</style>
+<script>
+function sbOpen(){
+  document.getElementById('sb').style.transform='translateX(0)';
+  document.getElementById('sb-ov').style.display='block';
+  document.body.style.overflow='hidden';
+}
+function sbClose(){
+  document.getElementById('sb').style.transform='translateX(-100%)';
+  document.getElementById('sb-ov').style.display='none';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')sbClose();});
+</script>
+<!-- ═══ SIDEBAR END ═══ -->
+
+
+
+</body>
+</html>
