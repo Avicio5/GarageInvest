@@ -1,0 +1,8 @@
+# Netlify Redirects – Canonical URL Enforcement
+# http → https (apex)
+http://garagenkapital.de/*    https://garagenkapital.de/:splat    301!
+# www → apex
+https://www.garagenkapital.de/*  https://garagenkapital.de/:splat  301!
+http://www.garagenkapital.de/*   https://garagenkapital.de/:splat  301!
+# /index.html → /
+/index.html  /  301
