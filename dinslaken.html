@@ -697,13 +697,13 @@ a[style*="color:var(--gold)"] { color: var(--navy) !important; }
       <input class="newsletter-input" type="email" placeholder="deine@email.de" id="nlEmail">
       <button class="newsletter-btn" onclick="nlSubmit()">Anmelden</button>
     </div>
-    <div class="newsletter-success" id="nlSuccess">Danke! Du bekommst gleich eine Bestaetigung.</div>
+    <div class="newsletter-success" id="nlSuccess">Danke! Du bekommst gleich eine Bestätigung.</div>
     <div class="newsletter-fine">Mit der Anmeldung stimmst du der Verarbeitung deiner E-Mail-Adresse zu.</div>
   </div>
 <script>
 function nlSubmit() {
   var email = document.getElementById("nlEmail").value;
-  if (!email || !email.includes("@")) { alert("Bitte gib eine gueltige E-Mail-Adresse ein."); return; }
+  if (!email || !email.includes("@")) { alert("Bitte gib eine gültige E-Mail-Adresse ein."); return; }
   document.querySelector(".newsletter-form").style.display = "none";
   document.getElementById("nlSuccess").style.display = "block";
 }
