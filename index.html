@@ -1183,6 +1183,34 @@ a[style*="color:var(--gold)"] { color: var(--navy) !important; }
   </div>
 </section>
 
+
+<!-- DISCOVER MORE -->
+<section id="discover">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="section-title">Mehr Wissen, bessere Entscheidungen</h2>
+      <p class="section-subtitle">Ratgeber, Marktbeobachtungen und Antworten auf die häufigsten Fragen – alles kostenlos.</p>
+    </div>
+    <div class="discover-grid reveal">
+      <a href="ratgeber.html" class="discover-card">
+        <div class="discover-icon">📚</div>
+        <div class="discover-title">Ratgeber</div>
+        <div class="discover-desc">Einsteiger-Guide, Finanzierung, Steuern und Skalierung – alle Grundlagen an einem Ort.</div>
+      </a>
+      <a href="blog.html" class="discover-card">
+        <div class="discover-icon">📰</div>
+        <div class="discover-title">Blog</div>
+        <div class="discover-desc">Aktuelle Markttrends, Investoren-Tipps und Praxisbeispiele aus NRW.</div>
+      </a>
+      <a href="faq.html" class="discover-card">
+        <div class="discover-icon">❓</div>
+        <div class="discover-title">FAQ</div>
+        <div class="discover-desc">20 häufige Fragen zu Rendite, Risiken, Steuern und Mietrecht – kompakt beantwortet.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section id="cta">
   <div class="container">
@@ -1309,6 +1337,15 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 <style>
 .sb-item{display:block;padding:8px 18px;text-decoration:none;color:#5c564e;font-size:13.5px;font-weight:500}
 .sb-item:hover{background:rgba(15,36,68,.05);color:#0f2444}
+
+/* ── DISCOVER (ergänzt) ── */
+.discover-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+@media (max-width: 780px) { .discover-grid { grid-template-columns: 1fr; } }
+.discover-card { display: block; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
+.discover-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
+.discover-icon { font-size: 22px; margin-bottom: 10px; }
+.discover-title { font-family: "Fraunces", serif; font-size: 17px; font-weight: 700; margin-bottom: 6px; color: var(--navy); }
+.discover-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 </style>
 <script>
 function sbOpen(){
