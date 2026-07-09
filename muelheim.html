@@ -540,6 +540,22 @@ function nlSubmit() {
     <a href="ruhrgebiet.html" class="btn-g">← Alle Ruhrgebiet-Städte</a>
     <a href="angebote.html" class="btn-g">Aktuelle Angebote</a>
   </div>
+
+  <div class="section-label animate">🗺️ In der Nähe</div>
+  <div class="related-grid animate">
+    <a href="essen.html" class="related-card">
+      <div class="related-tag">Nachbarstadt</div>
+      <div class="related-title">Essen: Preise &amp; Rendite ansehen</div>
+    </a>
+    <a href="oberhausen.html" class="related-card">
+      <div class="related-tag">Nachbarstadt</div>
+      <div class="related-title">Oberhausen: Preise &amp; Rendite ansehen</div>
+    </a>
+    <a href="duisburg.html" class="related-card">
+      <div class="related-tag">Nachbarstadt</div>
+      <div class="related-title">Duisburg: Preise &amp; Rendite ansehen</div>
+    </a>
+  </div>
 </div>
 
 <footer>
@@ -614,6 +630,15 @@ function nlSubmit() {
 <style>
 .sb-item{display:block;padding:8px 18px;text-decoration:none;color:#5c564e;font-size:13.5px;font-weight:500}
 .sb-item:hover{background:rgba(15,36,68,.05);color:#0f2444}
+
+/* ── RELATED / NACHBARSTAEDTE (ergänzt) ── */
+.related-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 40px 0; }
+@media (max-width: 680px) { .related-grid { grid-template-columns: 1fr; } }
+.related-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-decoration: none; color: var(--text); transition: border-color 0.2s, transform 0.2s; }
+.related-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
+.related-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.related-tag { color: var(--navy) !important; }
+.related-title { font-size: 15px; font-weight: 600; line-height: 1.4; }
 </style>
 <script>
 function sbOpen(){
