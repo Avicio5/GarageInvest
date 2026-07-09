@@ -357,6 +357,44 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
   <div class="hint-box animate">
     <strong>💡 So nutzt du den Rechner richtig:</strong> Gib realistische Werte ein – nicht die Best-Case-Zahlen des Verkäufers. Rechne mit mindestens 5 % Leerstand und dem tatsächlichen Hausgeld laut Abrechnung. Die Brutto-Rendite ist der Vergleichswert den Anbieter nennen – die Nachsteuer-Rendite ist was du wirklich verdienst.
   </div>
+
+  <div class="related-grid">
+    <a href="ratgeber-einsteiger.html" class="related-card">
+      <div class="related-tag">Ratgeber</div>
+      <div class="related-title">Der große Einsteiger-Guide – Garagen als Investment</div>
+    </a>
+    <a href="finanzierungsrechner.html" class="related-card">
+      <div class="related-tag">Rechner</div>
+      <div class="related-title">Lohnt sich eine Finanzierung? Jetzt berechnen</div>
+    </a>
+    <a href="garagen-als-kapitalanlage.html" class="related-card">
+      <div class="related-tag">Grundlagen</div>
+      <div class="related-title">Garagen als Kapitalanlage – der komplette Überblick</div>
+    </a>
+    <a href="faq.html" class="related-card">
+      <div class="related-tag">FAQ</div>
+      <div class="related-title">Risiken & Nachteile – was du wissen solltest</div>
+    </a>
+  </div>
+
+  <div class="newsletter-box animate">
+    <div class="newsletter-title">Kein Investment verpassen</div>
+    <div class="newsletter-desc">Neue Angebote, Marktberichte und Ratgeber direkt in dein Postfach – kostenlos, kein Spam, jederzeit abbestellbar.</div>
+    <div class="newsletter-form">
+      <input class="newsletter-input" type="email" placeholder="deine@email.de" id="nlEmail">
+      <button class="newsletter-btn" onclick="nlSubmit()">Anmelden</button>
+    </div>
+    <div class="newsletter-success" id="nlSuccess">Danke! Du bekommst gleich eine Bestätigung.</div>
+    <div class="newsletter-fine">Mit der Anmeldung stimmst du der Verarbeitung deiner E-Mail-Adresse zu.</div>
+  </div>
+  <script>
+  function nlSubmit() {
+    var email = document.getElementById("nlEmail").value;
+    if (!email || !email.includes("@")) { alert("Bitte gib eine gültige E-Mail-Adresse ein."); return; }
+    document.querySelector(".newsletter-form").style.display = "none";
+    document.getElementById("nlSuccess").style.display = "block";
+  }
+  </script>
 </div>
 
 <footer>
@@ -513,6 +551,38 @@ calc();
 <style>
 .sb-item{display:block;padding:8px 18px;text-decoration:none;color:#5c564e;font-size:13.5px;font-weight:500}
 .sb-item:hover{background:rgba(15,36,68,.05);color:#0f2444}
+
+/* ── NEWSLETTER (ergänzt) ── */
+.newsletter-box { background: var(--surface); border: 1px solid var(--gold-dim); border-radius: var(--radius); padding: 40px; margin-bottom: 60px; text-align: center; position: relative; overflow: hidden; }
+.newsletter-box::before { content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.newsletter-title { font-family: "Fraunces", serif; font-size: 24px; font-weight: 800; margin-bottom: 10px; }
+.newsletter-desc { font-size: 15px; color: var(--text-muted); font-weight: 300; line-height: 1.6; margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+.newsletter-form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.newsletter-input { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 13px 18px; font-size: 14px; color: var(--text); font-family: "Plus Jakarta Sans", sans-serif; width: 280px; outline: none; transition: border-color 0.2s; }
+.newsletter-input:focus { border-color: var(--gold-dim); }
+.newsletter-input::placeholder { color: var(--text-dim); }
+.newsletter-btn { background: var(--gold); color: var(--bg); border: none; border-radius: 10px; padding: 13px 24px; font-size: 14px; font-weight: 700; font-family: "Plus Jakarta Sans", sans-serif; cursor: pointer; transition: opacity 0.2s; }
+.newsletter-btn:hover { opacity: 0.88; }
+.newsletter-fine { font-size: 11px; color: var(--text-dim); margin-top: 14px; }
+.newsletter-success { display: none; background: rgba(76,175,130,0.1); border: 1px solid rgba(76,175,130,0.3); border-radius: 10px; padding: 16px; color: var(--green); font-size: 14px; font-weight: 500; margin-top: 12px; }
+.newsletter-box { background: var(--navy) !important; border-color: var(--navy-dim) !important; color: #fff !important; }
+.newsletter-box::before { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent) !important; }
+.newsletter-title { color: #fff !important; }
+.newsletter-desc { color: rgba(255,255,255,0.75) !important; }
+.newsletter-input { background: rgba(255,255,255,0.1) !important; border-color: rgba(255,255,255,0.2) !important; color: #fff !important; }
+.newsletter-input::placeholder { color: rgba(255,255,255,0.4) !important; }
+.newsletter-input:focus { border-color: rgba(255,255,255,0.5) !important; }
+.newsletter-btn { background: #fff !important; color: var(--navy) !important; }
+.newsletter-fine { color: rgba(255,255,255,0.4) !important; }
+
+/* ── RELATED (ergänzt) ── */
+.related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border); }
+@media (max-width: 560px) { .related-grid { grid-template-columns: 1fr; } }
+.related-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-decoration: none; color: var(--text); transition: border-color 0.2s, transform 0.2s; }
+.related-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
+.related-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.related-tag { color: var(--navy) !important; }
+.related-title { font-size: 15px; font-weight: 600; line-height: 1.4; }
 </style>
 <script>
 function sbOpen(){
