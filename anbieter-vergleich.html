@@ -463,7 +463,8 @@ a[style*="color:var(--gold)"] { color: var(--navy) !important; }
     <p>Alle wichtigen Kennzahlen auf einen Blick – transparent und ohne Werbung.</p>
   </div>
 
-  <table class="compare-table">
+  <div class="table-scroll">
+      <table class="compare-table">
     <thead>
       <tr>
         <th>Kriterium</th>
@@ -489,6 +490,7 @@ a[style*="color:var(--gold)"] { color: var(--navy) !important; }
       <tr><td>Kostentransparenz</td><td><span class="tag-green">Gut – klar aufgeschlüsselt</span></td><td><span class="tag-yellow">Mittel – teils unklar</span></td></tr>
     </tbody>
   </table>
+      </div>
 
   <div class="section-head">
     <h2>Stärken & Schwächen</h2>
@@ -627,6 +629,10 @@ a[style*="color:var(--gold)"] { color: var(--navy) !important; }
 <style>
 .sb-item{display:block;padding:8px 18px;text-decoration:none;color:#5c564e;font-size:13.5px;font-weight:500}
 .sb-item:hover{background:rgba(15,36,68,.05);color:#0f2444}
+
+/* ── MOBILE TABLE SCROLL (ergänzt) ── */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (max-width: 640px) { .price-table, .compare-table { min-width: 560px; } }
 </style>
 <script>
 function sbOpen(){
