@@ -548,6 +548,7 @@ a[style*="color:var(--gold)"] { color: var(--navy) !important; }
     <p class="section-text" style="font-size:14px">📖 Mehr zu Chancen, Risiken und Steuern: <a href="garagen-als-kapitalanlage.html" style="color:var(--gold);font-weight:600">Garagen als Kapitalanlage – der komplette Überblick →</a></p>
 
     <div class="panel">
+      <div class="table-scroll">
       <table class="price-table">
         <thead>
           <tr>
@@ -589,6 +590,7 @@ a[style*="color:var(--gold)"] { color: var(--navy) !important; }
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
   </div>
 
@@ -826,6 +828,10 @@ function nlSubmit() {
 .related-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
 .related-tag { color: var(--navy) !important; }
 .related-title { font-size: 15px; font-weight: 600; line-height: 1.4; }
+
+/* ── MOBILE TABLE SCROLL (ergänzt) ── */
+.table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (max-width: 640px) { .price-table, .compare-table { min-width: 560px; } }
 </style>
 <script>
 function sbOpen(){
