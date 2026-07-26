@@ -88,6 +88,14 @@ h1 em { font-style: italic; color: var(--navy); }
 .field:last-child { margin-bottom: 0; }
 .field label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
 .field-hint { font-size: 11px; color: var(--text-dim); margin-top: 3px; }
+.hint-toggle { margin-top: 4px; }
+.hint-toggle summary { font-size: 11px; color: var(--navy); cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 600; }
+.hint-toggle summary::-webkit-details-marker { display: none; }
+.hint-toggle summary::before { content: "ℹ️"; }
+.hint-toggle .hint-label-open { display: none; }
+.hint-toggle[open] .hint-label-closed { display: none; }
+.hint-toggle[open] .hint-label-open { display: inline; }
+.hint-toggle .field-hint { margin-top: 4px; }
 input[type="number"] { width: 100%; padding: 10px 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; font-size: 15px; font-weight: 500; color: var(--text); font-family: "Plus Jakarta Sans", sans-serif; outline: none; transition: border-color 0.2s; }
 input[type="number"]:focus { border-color: var(--navy); background: var(--surface); }
 .slider-wrap { display: flex; flex-direction: column; gap: 6px; }
@@ -237,25 +245,42 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
       <div class="field">
         <label>Kaufpreis (€)</label>
         <input type="number" id="kaufpreis" value="18000" min="1000" max="500000" oninput="calc()">
+        <details class="hint-toggle">
+          <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
+          <div class="field-hint">In NRW üblich: 8.000–30.000 €, je nach Stadt (Premiumlagen wie Düsseldorf auch mehr)</div>
+        </details>
       </div>
       <div class="field">
         <label>Eigenkapital (€)</label>
         <input type="number" id="eigenkapital" value="5000" min="0" max="500000" oninput="calc()">
-        <div class="field-hint">Kreditbetrag = Kaufpreis − Eigenkapital</div>
+        <details class="hint-toggle">
+          <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
+          <div class="field-hint">Kreditbetrag = Kaufpreis − Eigenkapital</div>
+        </details>
       </div>
       <div class="field">
         <label>Kaufnebenkosten (%)</label>
         <input type="number" id="nebenkosten" value="7.5" min="0" max="20" step="0.1" oninput="calc()">
-        <div class="field-hint">Notar + Grunderwerbsteuer (NRW: 6,5 %) + ggf. Makler</div>
+        <details class="hint-toggle" open>
+          <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
+          <div class="field-hint">Notar + Grunderwerbsteuer (NRW: 6,5 %) + ggf. Makler</div>
+        </details>
       </div>
       <div class="field">
         <label>Monatsmiete (€)</label>
         <input type="number" id="miete" value="80" min="0" max="2000" oninput="calc()">
+        <details class="hint-toggle">
+          <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
+          <div class="field-hint">NRW-Durchschnitt: 45–100 €, in Toplagen wie Düsseldorf oder Köln bis 150 €</div>
+        </details>
       </div>
       <div class="field">
         <label>Laufende Kosten (€/Monat)</label>
         <input type="number" id="kosten" value="30" min="0" max="500" oninput="calc()">
-        <div class="field-hint">Hausgeld, Verwaltung etc.</div>
+        <details class="hint-toggle" open>
+          <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
+          <div class="field-hint">Hausgeld, Verwaltung etc. – bei Tiefgaragen typisch 20–60 €/Monat</div>
+        </details>
       </div>
     </div>
 
@@ -270,7 +295,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
           </div>
           <input type="range" id="zinssatz" min="1" max="12" value="5.5" step="0.1" oninput="updateSlider(this,'zins-val','%'); calc()">
         </div>
-        <div class="field-hint">Aktuell typisch für Ratenkredite: 5–7 %; Immobilienkredite: 3–4 %</div>
+        <details class="hint-toggle">
+          <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
+          <div class="field-hint">Aktuell typisch für Ratenkredite: 5–7 %; Immobilienkredite: 3–4 %</div>
+        </details>
       </div>
       <div class="field">
         <label>Laufzeit (Jahre)</label>
@@ -281,6 +309,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
           </div>
           <input type="range" id="laufzeit" min="1" max="30" value="10" step="1" oninput="updateSliderJ(this,'laufzeit-val'); calc()">
         </div>
+        <details class="hint-toggle">
+          <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
+          <div class="field-hint">Bei Ratenkrediten meist 5–15 Jahre; über die Bank finanziert auch länger möglich</div>
+        </details>
       </div>
       <div class="field">
         <label>Tilgungsart</label>
@@ -288,6 +320,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
           <option value="annuity">Annuitätendarlehen (gleichbleibende Rate)</option>
           <option value="linear">Ratentilgung (sinkende Rate)</option>
         </select>
+        <details class="hint-toggle">
+          <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
+          <div class="field-hint">Annuität: Rate bleibt gleich, Zinsanteil sinkt. Ratentilgung: Rate sinkt, dafür schneller entschuldet.</div>
+        </details>
       </div>
     </div>
   </div>
