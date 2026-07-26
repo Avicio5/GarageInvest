@@ -39,12 +39,14 @@ html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); font-family: "Plus Jakarta Sans", sans-serif; overflow-x: hidden; }
 
 /* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; background: rgba(249,248,246,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 32px; height: 64px; display: flex; align-items: center; gap: 20px; justify-content: flex-start; background: rgba(249,248,246,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+.nav-tagline { flex: 1 1 auto; min-width: 0; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px; }
+@media (max-width: 1320px) { .nav-tagline { display: none; } }
 .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .nav-logo-icon { width: 32px; height: 32px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 900; color: #fff; font-family: "Fraunces", serif; }
 .nav-logo-text { font-family: "Fraunces", serif; font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
 .nav-logo-text span { color: var(--navy); }
-.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; margin-left: auto; }
 .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
 .nav-links a:hover { color: var(--text); background: var(--navy-faint); }
 .nav-cta { background: var(--navy) !important; color: #fff !important; font-weight: 600 !important; }
@@ -95,16 +97,16 @@ h1 em { font-style: italic; color: var(--navy); }
 .panel-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); margin-bottom: 20px; }
 .field { margin-bottom: 18px; }
 .field:last-child { margin-bottom: 0; }
-.field label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
-.field-hint { font-size: 11px; color: var(--text-dim); margin-top: 3px; }
-.hint-toggle { margin-top: 4px; }
-.hint-toggle summary { font-size: 11px; color: var(--navy); cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 4px; font-weight: 600; }
-.hint-toggle summary::-webkit-details-marker { display: none; }
-.hint-toggle summary::before { content: "ℹ️"; }
-.hint-toggle .hint-label-open { display: none; }
-.hint-toggle[open] .hint-label-closed { display: none; }
-.hint-toggle[open] .hint-label-open { display: inline; }
-.hint-toggle .field-hint { margin-top: 4px; }
+.field label { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.hint-wrap { position: relative; display: inline-flex; }
+.hint-icon { width: 16px; height: 16px; border-radius: 50%; background: var(--border2); color: var(--text-dim); font-size: 11px; font-weight: 700; font-style: italic; font-family: Georgia, "Times New Roman", serif; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; padding: 0; line-height: 1; flex-shrink: 0; transition: background 0.15s, color 0.15s; }
+.hint-icon:hover, .hint-icon:focus-visible, .hint-icon.active { background: var(--navy); color: #fff; outline: none; }
+.hint-tooltip { position: absolute; z-index: 30; top: 130%; left: 50%; transform: translateX(-50%) translateY(4px); width: max-content; max-width: min(240px, 70vw); background: var(--navy); color: #fff; font-size: 11.5px; line-height: 1.45; font-weight: 500; padding: 9px 12px; border-radius: 8px; box-shadow: 0 10px 28px rgba(0,0,0,0.18); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.15s, transform 0.15s, visibility 0.15s; }
+.hint-tooltip::before { content: ""; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-bottom-color: var(--navy); }
+.hint-wrap:hover .hint-tooltip, .hint-icon.active + .hint-tooltip { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+.field:first-child .hint-tooltip, .calc-panel .field:nth-child(1) .hint-tooltip { left: 0; transform: translateX(0) translateY(4px); }
+.field:first-child .hint-tooltip::before, .calc-panel .field:nth-child(1) .hint-tooltip::before { left: 8px; transform: translateX(0); }
+.field:first-child .hint-wrap:hover .hint-tooltip, .field:first-child .hint-icon.active + .hint-tooltip { transform: translateX(0) translateY(0); }
 input[type="number"] { width: 100%; padding: 10px 14px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; font-size: 15px; font-weight: 500; color: var(--text); font-family: "Plus Jakarta Sans", sans-serif; outline: none; transition: border-color 0.2s; }
 input[type="number"]:focus { border-color: var(--navy); background: var(--surface); }
 .slider-wrap { display: flex; flex-direction: column; gap: 6px; }
@@ -262,41 +264,25 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
     <div class="calc-panel">
       <div class="panel-title">💶 Kaufpreis & Nebenkosten</div>
       <div class="field">
-        <label>Kaufpreis (€)</label>
+        <label>Kaufpreis (€) <span class="hint-wrap"><button type="button" class="hint-icon" aria-label="Hinweis" onclick="toggleHint(this, event)">i</button><span class="hint-tooltip">In NRW üblich: 8.000–30.000 €, je nach Stadt (Premiumlagen wie Düsseldorf auch mehr)</span></span></label>
         <input type="number" id="kaufpreis" value="18000" min="1000" max="500000" oninput="calc()">
-        <details class="hint-toggle">
-          <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
-          <div class="field-hint">In NRW üblich: 8.000–30.000 €, je nach Stadt (Premiumlagen wie Düsseldorf auch mehr)</div>
-        </details>
       </div>
       <div class="field">
-        <label>Kaufnebenkosten (%)</label>
+        <label>Kaufnebenkosten (%) <span class="hint-wrap"><button type="button" class="hint-icon" aria-label="Hinweis" onclick="toggleHint(this, event)">i</button><span class="hint-tooltip">Notar + Grunderwerbsteuer NRW (6,5 %) + ggf. Makler</span></span></label>
         <input type="number" id="nebenkosten" value="7.5" min="0" max="20" step="0.1" oninput="calc()">
-        <details class="hint-toggle" open>
-          <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
-          <div class="field-hint">Notar + Grunderwerbsteuer NRW (6,5 %) + ggf. Makler</div>
-        </details>
       </div>
       <div class="field">
-        <label>Instandhaltungsrücklage (€/Jahr)</label>
+        <label>Instandhaltungsrücklage (€/Jahr) <span class="hint-wrap"><button type="button" class="hint-icon" aria-label="Hinweis" onclick="toggleHint(this, event)">i</button><span class="hint-tooltip">Faustregel: 50–150 €/Jahr – Einzelgarage eher 30–60 €, Tiefgaragenplatz in älterer WEG 80–150 €</span></span></label>
         <input type="number" id="ruecklage" value="200" min="0" max="5000" oninput="calc()">
-        <details class="hint-toggle">
-          <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
-          <div class="field-hint">Faustregel: 50–150 €/Jahr – Einzelgarage eher 30–60 €, Tiefgaragenplatz in älterer WEG 80–150 €</div>
-        </details>
       </div>
       <div class="field">
-        <label>Leerstand</label>
+        <label>Leerstand <span class="hint-wrap"><button type="button" class="hint-icon" aria-label="Hinweis" onclick="toggleHint(this, event)">i</button><span class="hint-tooltip">Realistisch kalkulieren: mindestens 5 %, in schwächeren Lagen auch 10–15 %</span></span></label>
         <div class="slider-wrap">
           <div class="slider-header">
             <span style="font-size:13px;color:var(--text-muted)">Anteil leer stehender Monate</span>
             <span class="slider-val" id="leerstand-val">5%</span>
           </div>
           <input type="range" id="leerstand" min="0" max="30" value="5" step="1" oninput="updateSlider(this,'leerstand-val','%'); calc()">
-          <details class="hint-toggle">
-            <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
-            <div class="field-hint">Realistisch kalkulieren: mindestens 5 %, in schwächeren Lagen auch 10–15 %</div>
-          </details>
         </div>
       </div>
     </div>
@@ -305,41 +291,25 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
     <div class="calc-panel">
       <div class="panel-title">🏠 Einnahmen & laufende Kosten</div>
       <div class="field">
-        <label>Monatsmiete (€)</label>
+        <label>Monatsmiete (€) <span class="hint-wrap"><button type="button" class="hint-icon" aria-label="Hinweis" onclick="toggleHint(this, event)">i</button><span class="hint-tooltip">NRW-Durchschnitt: 45–100 €, in Toplagen wie Düsseldorf oder Köln bis 150 €</span></span></label>
         <input type="number" id="miete" value="80" min="10" max="1000" oninput="calc()">
-        <details class="hint-toggle">
-          <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
-          <div class="field-hint">NRW-Durchschnitt: 45–100 €, in Toplagen wie Düsseldorf oder Köln bis 150 €</div>
-        </details>
       </div>
       <div class="field">
-        <label>Hausgeld (€/Monat)</label>
+        <label>Hausgeld (€/Monat) <span class="hint-wrap"><button type="button" class="hint-icon" aria-label="Hinweis" onclick="toggleHint(this, event)">i</button><span class="hint-tooltip">Bei Tiefgaragen in WEG typisch 20–60 €</span></span></label>
         <input type="number" id="hausgeld" value="30" min="0" max="300" oninput="calc()">
-        <details class="hint-toggle" open>
-          <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
-          <div class="field-hint">Bei Tiefgaragen in WEG typisch 20–60 €</div>
-        </details>
       </div>
       <div class="field">
-        <label>Verwaltungskosten (€/Jahr)</label>
+        <label>Verwaltungskosten (€/Jahr) <span class="hint-wrap"><button type="button" class="hint-icon" aria-label="Hinweis" onclick="toggleHint(this, event)">i</button><span class="hint-tooltip">Bei Eigenverwaltung 0 € – bei Fremdverwaltung üblich ca. 40–120 €/Jahr</span></span></label>
         <input type="number" id="verwaltung" value="0" min="0" max="2000" oninput="calc()">
-        <details class="hint-toggle">
-          <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
-          <div class="field-hint">Bei Eigenverwaltung 0 € – bei Fremdverwaltung üblich ca. 40–120 €/Jahr</div>
-        </details>
       </div>
       <div class="field">
-        <label>Persönlicher Steuersatz</label>
+        <label>Persönlicher Steuersatz <span class="hint-wrap"><button type="button" class="hint-icon" aria-label="Hinweis" onclick="toggleHint(this, event)">i</button><span class="hint-tooltip">Grenzsteuersatz meist zwischen 25–42 %, abhängig vom Gesamteinkommen</span></span></label>
         <div class="slider-wrap">
           <div class="slider-header">
             <span style="font-size:13px;color:var(--text-muted)">Einkommensteuer auf Mietgewinne</span>
             <span class="slider-val" id="steuer-val">30%</span>
           </div>
           <input type="range" id="steuer" min="0" max="45" value="30" step="1" oninput="updateSlider(this,'steuer-val','%'); calc()">
-          <details class="hint-toggle">
-            <summary><span class="hint-label-closed">Eingabehilfe anzeigen</span><span class="hint-label-open">Eingabehilfe ausblenden</span></summary>
-            <div class="field-hint">Grenzsteuersatz meist zwischen 25–42 %, abhängig vom Gesamteinkommen</div>
-          </details>
         </div>
       </div>
     </div>
@@ -458,6 +428,15 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
 </footer>
 
 <script>
+function toggleHint(btn, ev) {
+  ev.stopPropagation();
+  const wasActive = btn.classList.contains('active');
+  document.querySelectorAll('.hint-icon.active').forEach(el => el.classList.remove('active'));
+  if (!wasActive) btn.classList.add('active');
+}
+document.addEventListener('click', () => {
+  document.querySelectorAll('.hint-icon.active').forEach(el => el.classList.remove('active'));
+});
 function updateSlider(el, valId, suffix) {
   document.getElementById(valId).textContent = el.value + suffix;
 }
