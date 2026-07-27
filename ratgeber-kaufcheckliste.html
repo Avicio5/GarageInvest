@@ -304,8 +304,16 @@ a[style*="color:var(--gold)"] { color: var(--navy) !important; }
 .nav-dropdown-item-label { font-size: 13px; font-weight: 600; color: inherit; }
 .nav-dropdown-item-sub { font-size: 11px; color: var(--text-dim); margin-top: 1px; }
 
-
-
+.download-box { background: var(--navy); border-radius: 20px; padding: 40px; margin: 32px 0 40px; text-align: center; position: relative; overflow: hidden; }
+.download-box::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); }
+.download-icon { font-size: 36px; margin-bottom: 12px; }
+.download-title { font-family: "Fraunces", serif; font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+.download-desc { font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 24px; max-width: 440px; margin-left: auto; margin-right: auto; }
+.download-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.dl-btn { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--navy); text-decoration: none; font-weight: 700; font-size: 14px; padding: 13px 22px; border-radius: 10px; transition: transform 0.15s, opacity 0.15s; }
+.dl-btn:hover { transform: translateY(-2px); opacity: 0.92; }
+.dl-btn.outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); }
+.download-fine { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 16px; }
 
 
 
@@ -395,6 +403,16 @@ a[style*="color:var(--gold)"] { color: var(--navy) !important; }
     <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=780&q=80&auto=format&fit=crop" alt="" class="article-hero-img animate">
 
     <p>Bevor du einen Stellplatz oder eine Garage kaufst, solltest du diese 15 Punkte sorgfältig prüfen. Ein schlechter Kauf ist teurer als kein Kauf – diese Checkliste schützt dich vor den häufigsten Fehlern.</p>
+
+    <div class="download-box animate">
+      <div class="download-icon">✅</div>
+      <div class="download-title">Checkliste zum Ausdrucken</div>
+      <div class="download-desc">Alle 15 Punkte übersichtlich zum Abhaken – nimm sie mit zur Besichtigung. Ohne Anmeldung, ohne Wasserzeichen.</div>
+      <div class="download-btns">
+        <a href="Garagenkauf-Checkliste.pdf" class="dl-btn" download>⬇ PDF-Checkliste herunterladen</a>
+      </div>
+      <div class="download-fine">Kostenlos · Keine E-Mail-Pflicht · Sofortiger Download</div>
+    </div>
 
     <h2>🏗️ Baulicher Zustand</h2>
     <ol>
