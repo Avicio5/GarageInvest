@@ -111,6 +111,20 @@ h1.article-title em { font-style: italic; color: var(--navy); }
 .related-card:hover { border-color: var(--navy); transform: translateY(-2px); }
 .related-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); margin-bottom: 6px; }
 .related-title { font-size: 14px; font-weight: 600; line-height: 1.4; }
+.kpi { color: var(--navy); font-weight: 800; background: var(--navy-faint); padding: 1px 8px; border-radius: 6px; white-space: nowrap; }
+.kpi-green { color: #15803d; font-weight: 800; background: #f0fdf4; padding: 1px 8px; border-radius: 6px; white-space: nowrap; }
+.kpi-red { color: #b91c1c; font-weight: 800; background: #fef2f2; padding: 1px 8px; border-radius: 6px; white-space: nowrap; }
+.fazit-box { background: var(--navy); border-radius: var(--radius); padding: 22px 26px; margin: 30px 0; }
+.fazit-box-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 10px; }
+.fazit-box p { color: rgba(255,255,255,0.94); font-size: 15px; margin-bottom: 0; line-height: 1.7; }
+.fazit-box strong { color: #fff; }
+.law-box { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 24px; margin: 30px 0; }
+.law-box-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; }
+.law-box ul { margin: 0; list-style: none; padding: 0; }
+.law-box li { font-size: 13.5px; color: var(--text-muted); border-bottom: 1px solid var(--border); padding: 10px 0; }
+.law-box li:last-child { border-bottom: none; }
+.law-box a { font-weight: 700; color: var(--navy); text-decoration: none; }
+.law-box a:hover { text-decoration: underline; }
 footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(--navy); }
 .footer-inner { max-width: 780px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
 .footer-copy { font-size: 12px; color: rgba(255,255,255,0.5); }
@@ -173,7 +187,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
 
     <h2>Was macht Garagen zur attraktiven Kapitalanlage?</h2>
     <p>Wer an Immobilien als Kapitalanlage denkt, denkt meist sofort an Eigentumswohnungen. Dabei übersehen viele Investoren eine oft rentablere Alternative: <strong>Garagen, Stellplätze und Tiefgaragenplätze als Kapitalanlage</strong>. Der Grund ist simpel – der Parkplatzmangel in deutschen Städten wächst, während das Angebot kaum mithalten kann.</p>
-    <p>Als Kapitalanlage bieten Garagen einen entscheidenden Vorteil gegenüber Wohnimmobilien: <strong>Der Einstieg ist bereits ab 8.000 Euro möglich</strong> – mit eigenem Grundbucheintrag, monatlichen Mieteinnahmen und soliden Renditen von 4 bis 7 Prozent.</p>
+    <p>Als Kapitalanlage bieten Garagen einen entscheidenden Vorteil gegenüber Wohnimmobilien: <strong>Der Einstieg ist bereits ab <span class="kpi">8.000 €</span> möglich</strong> – mit eigenem Grundbucheintrag, monatlichen Mieteinnahmen und soliden Renditen von <span class="kpi">4–7 %</span>.</p>
 
     <div class="info-box">
       <div class="info-box-title">💡 Warum Garagen als Kapitalanlage 2026?</div>
@@ -229,7 +243,7 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
 
     <div class="warn-box">
       <div class="warn-box-title">⚠️ Brutto vs. Netto-Rendite</div>
-      <p>Anbieter werben oft mit Brutto-Renditen von 6–8 %. Nach Hausgeld, Leerstand, Verwaltung und Steuern bleiben realistisch 3–4,5 % netto übrig. Nutze unseren <a href="garagen-renditerechner.html">Renditerechner</a> um die echte Rendite zu berechnen.</p>
+      <p>Anbieter werben oft mit Brutto-Renditen von <span class="kpi-red">6–8 %</span>. Nach Hausgeld, Leerstand, Verwaltung und Steuern bleiben realistisch nur <span class="kpi-green">3–4,5 % netto</span> übrig. Nutze unseren <a href="garagen-renditerechner.html">Renditerechner</a> um die echte Rendite zu berechnen.</p>
     </div>
 
     <h2>Wertentwicklung: Was aus deiner Garagen-Investition in 10 Jahren wird</h2>
@@ -288,7 +302,12 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
       </div>
     </div>
 
-    <p>Nach 10 Jahren steht bei diesem Beispiel ein Gesamtwert von rund <strong>32.642 €</strong> zu Buche – der Immobilienwert ist auf etwa <strong>23.042 €</strong> gestiegen, hinzu kommen <strong>9.600 €</strong> an kumulierten Bruttomieteinnahmen. Das entspricht einem Wertzuwachs von rund 81 % gegenüber dem Kaufpreis, bzw. einer durchschnittlichen Gesamtrendite von etwa 6,1 % pro Jahr.</p>
+    <p>Nach 10 Jahren steht bei diesem Beispiel ein Gesamtwert von rund <span class="kpi">32.642 €</span> zu Buche – der Immobilienwert ist auf etwa 23.042 € gestiegen, hinzu kommen 9.600 € an kumulierten Bruttomieteinnahmen. Das entspricht einem Wertzuwachs von rund <span class="kpi-green">81 %</span> gegenüber dem Kaufpreis, bzw. einer durchschnittlichen Gesamtrendite von etwa 6,1 % pro Jahr.</p>
+
+    <div class="fazit-box">
+      <div class="fazit-box-title">🎯 Zwischenfazit: Wertentwicklung</div>
+      <p>Miete und Wertsteigerung zusammen ergeben bei unserem Beispielobjekt eine <strong>durchschnittliche Gesamtrendite von rund 6,1 % pro Jahr</strong> – ohne dass du dafür aktiv etwas tun musst, außer gelegentlich nach Mieter und Objekt zu schauen.</p>
+    </div>
 
     <div class="info-box">
       <div class="info-box-title">ℹ️ Hinweis zur Berechnung</div>
@@ -297,12 +316,12 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
 
     <h2>Vorteile von Garagen als Kapitalanlage</h2>
     <ul>
-      <li><strong>Niedriger Einstiegspreis:</strong> Schon ab 8.000 € kannst du Immobilieneigentümer werden</li>
+      <li><strong>Niedriger Einstiegspreis:</strong> Schon ab <span class="kpi">8.000 €</span> kannst du Immobilieneigentümer werden</li>
       <li><strong>Kein Mieterschutzrecht:</strong> Kündigung ohne Angabe von Gründen möglich – großer Vorteil gegenüber Wohnungen</li>
       <li><strong>Kaum Verwaltungsaufwand:</strong> Keine Nebenkostenabrechnung, keine Heizung, keine Renovierungen</li>
       <li><strong>Stabile Nachfrage:</strong> Parkplatzmangel in Städten wächst – unabhängig von Konjunktur</li>
       <li><strong>Risikostreuung:</strong> Für den Preis einer Wohnung kaufst du 10–15 Stellplätze</li>
-      <li><strong>Steuerfreiheit nach 10 Jahren:</strong> Verkaufsgewinne nach 10 Jahren Haltedauer steuerfrei</li>
+      <li><strong>Steuerfreiheit nach 10 Jahren:</strong> Verkaufsgewinne nach 10 Jahren Haltedauer steuerfrei (§ <a href="https://www.gesetze-im-internet.de/estg/__23.html" target="_blank" rel="noopener">23 Abs. 1 Nr. 1 EStG</a>)</li>
       <li><strong>Grundbucheintrag:</strong> Echter Immobilienbesitz mit allen Rechten</li>
     </ul>
 
@@ -310,9 +329,19 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
     <ul>
       <li><strong>Geringes absolutes Einkommen:</strong> Ein Stellplatz bringt 50–100 € im Monat – du brauchst mehrere für relevantes Einkommen</li>
       <li><strong>Dünner Markt:</strong> Garagen als Kapitalanlage sind selten öffentlich inseriert – aktive Suche nötig</li>
-      <li><strong>Umsatzsteuerpflicht:</strong> Separate Garagenvermietung ist umsatzsteuerpflichtig (Kleinunternehmerregelung prüfen)</li>
+      <li><strong>Umsatzsteuerpflicht:</strong> Separate Garagenvermietung ist umsatzsteuerpflichtig (§ <a href="https://www.gesetze-im-internet.de/ustg_1980/__4.html" target="_blank" rel="noopener">4 Nr. 12 UStG</a> greift hier nicht) – <a href="https://www.gesetze-im-internet.de/ustg_1980/__19.html" target="_blank" rel="noopener">Kleinunternehmerregelung nach § 19 UStG</a> prüfen</li>
       <li><strong>Standortrisiko:</strong> Ein neues Parkhaus in der Nähe kann die Nachfrage reduzieren</li>
     </ul>
+
+    <div class="law-box">
+      <div class="law-box-title">📚 Rechtliche Grundlagen zu diesem Abschnitt</div>
+      <ul>
+        <li><a href="https://www.gesetze-im-internet.de/estg/__23.html" target="_blank" rel="noopener">§ 23 Abs. 1 Nr. 1 EStG</a> – Private Veräußerungsgeschäfte: steuerfrei nach 10 Jahren Haltefrist</li>
+        <li><a href="https://www.gesetze-im-internet.de/ustg_1980/__19.html" target="_blank" rel="noopener">§ 19 UStG</a> – Kleinunternehmerregelung (Umsatzgrenze 25.000 € im Vorjahr)</li>
+        <li><a href="https://www.gesetze-im-internet.de/estg/__21.html" target="_blank" rel="noopener">§ 21 EStG</a> – Einkünfte aus Vermietung und Verpachtung</li>
+      </ul>
+      <p style="font-size:12px;color:var(--text-dim);margin:12px 0 0">Ausführlich mit Rechenbeispielen: unser <a href="ratgeber-steuern.html">Steuer-Ratgeber</a>.</p>
+    </div>
 
     <h2>So findest du Garagen als Kapitalanlage</h2>
     <ol>
