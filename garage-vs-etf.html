@@ -122,6 +122,20 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
 .vscard-label { font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:10px; }
 .vscard-value { font-family:"Fraunces",serif; font-size:30px; font-weight:800; color:var(--navy); line-height:1.15; margin-bottom:6px; }
 .vscard-sub { font-size:13px; color:var(--text-muted); line-height:1.6; }
+.kpi { color: var(--navy); font-weight: 800; background: var(--navy-faint); padding: 1px 8px; border-radius: 6px; white-space: nowrap; }
+.kpi-green { color: #15803d; font-weight: 800; background: #f0fdf4; padding: 1px 8px; border-radius: 6px; white-space: nowrap; }
+.kpi-red { color: #b91c1c; font-weight: 800; background: #fef2f2; padding: 1px 8px; border-radius: 6px; white-space: nowrap; }
+.fazit-box { background: var(--navy); border-radius: var(--radius); padding: 22px 26px; margin: 30px 0; }
+.fazit-box-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 10px; }
+.fazit-box p { color: rgba(255,255,255,0.94); font-size: 15px; margin-bottom: 0; line-height: 1.7; }
+.fazit-box strong { color: #fff; }
+.law-box { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 24px; margin: 30px 0; }
+.law-box-title { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 14px; }
+.law-box ul { margin: 0; list-style: none; padding: 0; }
+.law-box li { font-size: 13.5px; color: var(--text-muted); border-bottom: 1px solid var(--border); padding: 10px 0; }
+.law-box li:last-child { border-bottom: none; }
+.law-box a { font-weight: 700; color: var(--navy); text-decoration: none; }
+.law-box a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -207,10 +221,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
 
     <h2>ETF als Kapitalanlage – kurz erklärt</h2>
     <p>Ein ETF (Exchange Traded Fund) ist ein börsengehandelter Indexfonds, der einen Markt wie den MSCI World automatisch nachbildet – du kaufst mit einem Wertpapier praktisch einen kleinen Anteil an tausenden Unternehmen weltweit. In Deutschland ist das inzwischen Massenware: Allein über monatliche ETF-Sparpläne fließen mittlerweile Monat für Monat rund 5,8 Millionen Ausführungen, mit einem Anlagevolumen der Privatanleger von knapp 200 Milliarden Euro.</p>
-    <p>Historisch hat der MSCI World seit den 1970er-Jahren im Schnitt rund 7 bis 8 Prozent Rendite pro Jahr erzielt, inklusive wiederangelegter Dividenden. Für 20-jährige Sparplan-Zeiträume weist das Deutsche Aktieninstitut sogar einen Durchschnitt von 8,6 Prozent aus. Wichtig dabei: Das ist die <strong>Vergangenheit</strong> – keine Garantie für die Zukunft, und mit teils heftigen Schwankungen zwischendurch.</p>
+    <p>Historisch hat der MSCI World seit den 1970er-Jahren im Schnitt rund <span class="kpi">7–8 % Rendite</span> pro Jahr erzielt, inklusive wiederangelegter Dividenden. Für 20-jährige Sparplan-Zeiträume weist das Deutsche Aktieninstitut sogar einen Durchschnitt von <span class="kpi">8,6 %</span> aus. Wichtig dabei: Das ist die <strong>Vergangenheit</strong> – keine Garantie für die Zukunft, und mit teils heftigen Schwankungen zwischendurch.</p>
 
     <h2>Garage als Kapitalanlage – kurz erklärt</h2>
-    <p>Eine Garage oder ein Stellplatz ist echtes Immobilieneigentum mit eigenem Grundbucheintrag – nur eben zu einem Bruchteil des Preises einer Wohnung. In NRW findest du Objekte bereits ab rund 8.000 Euro, mit realistischen Brutto-Renditen von 4 bis 7 Prozent aus der Vermietung. Alle Details dazu findest du in unserem <a href="garagen-als-kapitalanlage.html">kompletten Kapitalanlage-Guide</a> – hier konzentrieren wir uns auf den direkten Vergleich mit dem ETF.</p>
+    <p>Eine Garage oder ein Stellplatz ist echtes Immobilieneigentum mit eigenem Grundbucheintrag – nur eben zu einem Bruchteil des Preises einer Wohnung. In NRW findest du Objekte bereits ab rund <span class="kpi">8.000 €</span>, mit realistischen Brutto-Renditen von <span class="kpi">4–7 %</span> aus der Vermietung. Alle Details dazu findest du in unserem <a href="garagen-als-kapitalanlage.html">kompletten Kapitalanlage-Guide</a> – hier konzentrieren wir uns auf den direkten Vergleich mit dem ETF.</p>
 
     <h2>Der direkte Vergleich</h2>
     <div class="table-wrap">
@@ -237,24 +251,86 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
     <p style="font-size:12.5px;color:var(--text-dim)">* Historischer Durchschnitt laut Deutschem Aktieninstitut (MSCI-World-Renditedreieck), keine Garantie für die Zukunft. ** Aktien-ETF nach 30 % Teilfreistellung, Abgeltungssteuer 25 % + Soli.</p>
 
     <h3>Rendite: Was ist realistisch?</h3>
-    <p>Der MSCI World hat langfristig 7 bis 8 Prozent pro Jahr gebracht, in besonders guten 10-Jahres-Zeiträumen sogar über 10 Prozent. Unabhängige Portale wie Finanztip empfehlen für Zukunftsprognosen trotzdem eher konservative 6 Prozent, da die Vergangenheit keine Garantie ist.</p>
-    <p>Bei Garagen setzt sich die Rendite aus Mieteinnahmen (brutto meist 4–7 %) und Wertsteigerung zusammen. Einen offiziellen Preisindex für Garagen in NRW gibt es nicht – seriös kalkulierst du eher mit 2 bis 3 Prozent jährlicher Wertsteigerung, nicht mit den 5 bis 6 Prozent, mit denen manche Anbieter für Einzellagen werben.</p>
+    <p>Der MSCI World hat langfristig <span class="kpi">7–8 % pro Jahr</span> gebracht, in besonders guten 10-Jahres-Zeiträumen sogar über 10 %. Unabhängige Portale wie Finanztip empfehlen für Zukunftsprognosen trotzdem eher konservative <span class="kpi">6 %</span>, da die Vergangenheit keine Garantie ist.</p>
+    <p>Bei Garagen setzt sich die Rendite aus Mieteinnahmen (brutto meist <span class="kpi">4–7 %</span>) und Wertsteigerung zusammen. Einen offiziellen Preisindex für Garagen in NRW gibt es nicht – seriös kalkulierst du eher mit <span class="kpi">2–3 %</span> jährlicher Wertsteigerung, nicht mit den 5–6 %, mit denen manche Anbieter für Einzellagen werben.</p>
 
     <h3>Steuern: Wer gewinnt?</h3>
-    <p>Bei ETFs greift die Abgeltungssteuer von 25 % plus Solidaritätszuschlag, effektiv 26,375 %. Für Aktien-ETFs wie den MSCI World gilt aber die <strong>Teilfreistellung</strong>: 30 % der Erträge bleiben automatisch steuerfrei. Effektiv landest du damit bei rund 18,5 % – unabhängig von der Haltedauer. Zusätzlich greift der Sparerpauschbetrag von 1.000 € pro Person und Jahr (2.000 € für Verheiratete), der Gewinne bis zu dieser Grenze komplett freistellt.</p>
-    <p>Bei einer Garage zahlst du auf die Mieteinnahmen deinen persönlichen Einkommensteuersatz – je nach Gesamteinkommen zwischen 0 und 45 %, oft also mehr als bei ETFs. Der entscheidende Unterschied liegt beim Verkauf: Hältst du die Garage privat länger als <strong>10 Jahre</strong>, ist der komplette Wertzuwachs beim Verkauf steuerfrei. Diesen Vorteil gibt es bei Wertpapieren in Deutschland nicht.</p>
+    <p>Bei ETFs greift die Abgeltungssteuer: <span class="kpi">25 %</span> plus Solidaritätszuschlag (§ <a href="https://www.gesetze-im-internet.de/estg/__32d.html" target="_blank" rel="noopener">32d Abs. 1 EStG</a>), effektiv 26,375 %. Für Aktien-ETFs wie den MSCI World gilt aber die <strong>Teilfreistellung</strong>: 30 % der Erträge bleiben automatisch steuerfrei (§ <a href="https://www.gesetze-im-internet.de/invstg_2018/__20.html" target="_blank" rel="noopener">20 InvStG</a>). Effektiv landest du damit bei <span class="kpi-green">18,46 %</span> – unabhängig von der Haltedauer. Zusätzlich greift der Sparerpauschbetrag von 1.000 € pro Person und Jahr, 2.000 € für Verheiratete (§ <a href="https://www.gesetze-im-internet.de/estg/__20.html" target="_blank" rel="noopener">20 Abs. 9 EStG</a>), der Gewinne bis zu dieser Grenze komplett freistellt.</p>
+    <p>Bei einer Garage zahlst du auf die Mieteinnahmen deinen persönlichen Einkommensteuersatz aus Vermietung und Verpachtung (§ <a href="https://www.gesetze-im-internet.de/estg/__21.html" target="_blank" rel="noopener">21 EStG</a>) – je nach Gesamteinkommen zwischen <span class="kpi-red">0 und 45 %</span>, oft also mehr als bei ETFs. Der entscheidende Unterschied liegt beim Verkauf: Hältst du die Garage privat länger als <span class="kpi-green">10 Jahre</span>, ist der komplette Wertzuwachs beim Verkauf steuerfrei (§ <a href="https://www.gesetze-im-internet.de/estg/__23.html" target="_blank" rel="noopener">23 Abs. 1 Nr. 1 EStG</a>, private Veräußerungsgeschäfte). Diesen Vorteil gibt es bei Wertpapieren in Deutschland nicht.</p>
+
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:26px 22px 16px;margin:26px 0;box-shadow:var(--shadow-sm)">
+      <div style="font-size:12px;color:var(--text-dim);text-align:center;margin-bottom:18px">Effektive Steuerlast auf laufende Erträge – Garage vs. ETF</div>
+      <svg viewBox="0 0 700 175" style="width:100%;height:auto;display:block" role="img" aria-label="Balkendiagramm: Steuerlast Garage 0 bis 45 Prozent je nach persönlichem Einkommensteuersatz, ETF konstant 18,46 Prozent nach Teilfreistellung">
+        <defs>
+          <linearGradient id="gradGarage" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#c3cbd8"/>
+            <stop offset="100%" stop-color="#0f2444"/>
+          </linearGradient>
+        </defs>
+        <text x="20" y="16" font-family="Plus Jakarta Sans, sans-serif" font-size="13.5" font-weight="700" fill="#1a1814">🏢 Garage – Mieteinnahmen (persönlicher Steuersatz)</text>
+        <rect x="20" y="26" width="660" height="30" rx="15" fill="#e2ddd6"/>
+        <rect x="20" y="26" width="660" height="30" rx="15" fill="url(#gradGarage)"/>
+        <text x="30" y="46" font-family="Plus Jakarta Sans, sans-serif" font-size="12.5" fill="#1a1814" text-anchor="start">0 %</text>
+        <text x="668" y="46" font-family="Plus Jakarta Sans, sans-serif" font-size="13.5" font-weight="800" fill="#fff" text-anchor="end">bis 45 %</text>
+        <text x="20" y="93" font-family="Plus Jakarta Sans, sans-serif" font-size="13.5" font-weight="700" fill="#1a1814">📈 ETF – Aktien-ETF (nach Teilfreistellung)</text>
+        <rect x="20" y="103" width="660" height="30" rx="15" fill="#e2ddd6"/>
+        <rect x="20" y="103" width="270.8" height="30" rx="15" fill="#16a34a"/>
+        <text x="260" y="123" font-family="Plus Jakarta Sans, sans-serif" font-size="13.5" font-weight="800" fill="#fff" text-anchor="end">18,46 %</text>
+        <text x="278" y="123" font-family="Plus Jakarta Sans, sans-serif" font-size="12.5" fill="#5c564e" text-anchor="start">immer gleich</text>
+        <text x="20" y="160" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" fill="#9b9590">Persönlicher Steuersatz 2026: 0–45 % je nach Gesamteinkommen (§ 32a EStG) · ETF effektiv 18,46 % (§ 20 InvStG + § 32d EStG)</text>
+      </svg>
+    </div>
 
     <div class="warn-box">
       <div class="warn-box-title">⚠️ NRW-Besonderheit: Grunderwerbsteuer</div>
-      <p>NRW erhebt mit 6,5 % eine der höchsten Grunderwerbsteuern Deutschlands (Bayern: nur 3,5 %). Bei einer Garage für 18.000 € sind das rund 1.170 € Kaufnebenkosten – bei ETFs fällt keine vergleichbare Steuer an.</p>
+      <p>NRW erhebt mit <span class="kpi-red">6,5 %</span> eine der höchsten Grunderwerbsteuern Deutschlands (Bayern: nur 3,5 %). Bundesrechtliche Grundlage ist § <a href="https://www.gesetze-im-internet.de/grestg_1983/__11.html" target="_blank" rel="noopener">11 GrEStG</a>, den konkreten Satz legt jedes Bundesland selbst fest. Bei einer Garage für 18.000 € sind das rund 1.170 € Kaufnebenkosten – bei ETFs fällt keine vergleichbare Steuer an.</p>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#f9f8f6,#f0eeea);border:1px solid var(--border);border-radius:var(--radius);padding:24px 20px 14px;margin:26px 0">
+      <svg viewBox="0 0 700 150" style="width:100%;height:auto;display:block" role="img" aria-label="Zeitstrahl: Nach 10 Jahren Haltefrist ist der Verkaufsgewinn einer privat gehaltenen Garage steuerfrei, ein Verkauf davor ist steuerpflichtig">
+        <text x="350" y="20" font-family="Fraunces, serif" font-size="15" font-weight="800" fill="#0f2444" text-anchor="middle">10 Jahre Spekulationsfrist (§ 23 Abs. 1 Nr. 1 EStG)</text>
+        <line x1="40" y1="80" x2="660" y2="80" stroke="#ccc8bf" stroke-width="3"/>
+        <circle cx="40" cy="80" r="9" fill="#0f2444"/>
+        <text x="40" y="112" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="700" fill="#1a1814" text-anchor="middle">Kauf</text>
+        <text x="40" y="128" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" fill="#9b9590" text-anchor="middle">Jahr 0</text>
+        <circle cx="226" cy="80" r="7" fill="#fff" stroke="#d97706" stroke-width="2.5"/>
+        <text x="226" y="63" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" font-weight="700" fill="#d97706" text-anchor="middle">vorzeitiger Verkauf</text>
+        <text x="226" y="112" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" fill="#d97706" text-anchor="middle">steuerpflichtig</text>
+        <circle cx="660" cy="80" r="11" fill="#16a34a"/>
+        <path d="M 655,80 L 659,84 L 666,75" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="660" y="112" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="800" fill="#15803d" text-anchor="end">Steuerfrei verkaufen</text>
+        <text x="660" y="128" font-family="Plus Jakarta Sans, sans-serif" font-size="11.5" fill="#9b9590" text-anchor="end">ab Jahr 10</text>
+      </svg>
+    </div>
+
+    <div class="law-box">
+      <div class="law-box-title">📚 Rechtliche Grundlagen zu diesem Abschnitt</div>
+      <ul>
+        <li><a href="https://www.gesetze-im-internet.de/estg/__32d.html" target="_blank" rel="noopener">§ 32d Abs. 1 EStG</a> – Sondersteuersatz 25 % für Einkünfte aus Kapitalvermögen (Abgeltungssteuer)</li>
+        <li><a href="https://www.gesetze-im-internet.de/invstg_2018/__20.html" target="_blank" rel="noopener">§ 20 InvStG</a> – Teilfreistellung: 30 % der Erträge aus Aktienfonds/-ETFs steuerfrei</li>
+        <li><a href="https://www.gesetze-im-internet.de/estg/__20.html" target="_blank" rel="noopener">§ 20 Abs. 9 EStG</a> – Sparerpauschbetrag: 1.000 € (2.000 € bei Zusammenveranlagung)</li>
+        <li><a href="https://www.gesetze-im-internet.de/estg/__21.html" target="_blank" rel="noopener">§ 21 EStG</a> – Einkünfte aus Vermietung und Verpachtung (Garagen-Mieteinnahmen)</li>
+        <li><a href="https://www.gesetze-im-internet.de/estg/__23.html" target="_blank" rel="noopener">§ 23 Abs. 1 Nr. 1 EStG</a> – Private Veräußerungsgeschäfte: steuerfrei nach 10 Jahren Haltefrist</li>
+        <li><a href="https://www.gesetze-im-internet.de/grestg_1983/__11.html" target="_blank" rel="noopener">§ 11 GrEStG</a> – Grunderwerbsteuer, Steuersatz durch Bundesländer festgelegt</li>
+      </ul>
+    </div>
+
+    <div class="fazit-box">
+      <div class="fazit-box-title">🎯 Zwischenfazit: Steuern</div>
+      <p>ETFs punkten mit einem <strong>niedrigen, festen</strong> effektiven Steuersatz von 18,46 % – unabhängig davon, wie lange du hältst. Garagen können bei hohem Einkommen zwischenzeitlich mehr Steuer kosten, spielen ihren Trumpf aber beim Verkauf aus: <strong>steuerfrei nach 10 Jahren</strong> – einen Vorteil, den es bei Wertpapieren in Deutschland schlicht nicht gibt.</p>
     </div>
 
     <h3>Risiko &amp; Schwankung</h3>
-    <p>An der Börse schwankt dein Depotwert täglich sichtbar. In Krisenjahren wie 2008, 2020 oder 2022 waren zwischenzeitliche Buchverluste von 30 bis 50 % keine Seltenheit. Wer in solchen Phasen verkauft, realisiert den Verlust – wer durchhält, hat historisch fast immer wieder aufgeholt.</p>
+    <p>An der Börse schwankt dein Depotwert täglich sichtbar. In Krisenjahren wie 2008, 2020 oder 2022 waren zwischenzeitliche Buchverluste von <span class="kpi-red">30 bis 50 %</span> keine Seltenheit. Wer in solchen Phasen verkauft, realisiert den Verlust – wer durchhält, hat historisch fast immer wieder aufgeholt.</p>
     <p>Eine Garage schwankt auf dem Papier kaum, einfach weil es keinen täglichen Marktpreis gibt. Das heißt aber nicht "risikofrei": Der Markt ist dünn, ein Verkauf kann Monate dauern, und der wirkliche Wert zeigt sich erst, wenn ein Käufer gefunden ist. Das Risiko ist eher ein Liquiditäts- als ein Kursrisiko.</p>
 
     <h3>Liquidität &amp; Aufwand</h3>
     <p>ETFs verkaufst du an jedem Börsentag in Sekunden. Eine Garage zu verkaufen dauert realistisch Wochen bis Monate, inklusive Käufersuche, Notartermin und Grundbucheintrag. Dafür läuft ein ETF-Sparplan nach der Einrichtung vollautomatisch – eine Garage bedeutet zwar deutlich weniger Aufwand als eine Eigentumswohnung, aber du kümmerst dich trotzdem um Mieter, Mietvertrag und gelegentlich um das Objekt selbst.</p>
+
+    <div class="fazit-box">
+      <div class="fazit-box-title">🎯 Zwischenfazit: Risiko &amp; Liquidität</div>
+      <p>ETFs sind das Gegenteil von Garagen: <strong>hohe Schwankung, aber jederzeit liquide</strong>. Garagen sind <strong>ruhig im Wert, aber schwer kurzfristig zu Geld zu machen</strong>. Wer sein Geld in den nächsten Jahren sicher braucht, sollte das bei der Wahl berücksichtigen.</p>
+    </div>
 
     <h2>Rechenbeispiel: 18.000 € über 10 Jahre</h2>
     <p>Um die Unterschiede greifbar zu machen, rechnen wir ein konkretes Beispiel: 18.000 € einmal in eine Garage investiert (unser Beispielobjekt aus dem <a href="garagen-als-kapitalanlage.html">Kapitalanlage-Guide</a>), einmal in einen thesaurierenden MSCI-World-ETF.</p>
@@ -272,11 +348,16 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; background: var(-
       </div>
     </div>
 
-    <p>Bei einer vorsichtigen Renditeannahme von 6 % pro Jahr – wie sie z. B. Finanztip für Prognosen nutzt – landen beide Anlageformen nach 10 Jahren <strong>fast gleichauf</strong>. Der Unterschied zeigt sich dann weniger in der nackten Zahl, sondern in Risiko, Aufwand und Steuervorteilen.</p>
+    <p>Bei einer vorsichtigen Renditeannahme von <span class="kpi">6 % pro Jahr</span> – wie sie z. B. Finanztip für Prognosen nutzt – landen beide Anlageformen nach 10 Jahren <strong>fast gleichauf</strong>. Der Unterschied zeigt sich dann weniger in der nackten Zahl, sondern in Risiko, Aufwand und Steuervorteilen.</p>
 
     <div class="info-box">
       <div class="info-box-title">ℹ️ Zum fairen Vergleich</div>
       <p>Die Mieteinnahmen aus der Garage sind sofort verfügbares Geld, das du zusätzlich anlegen könntest. Der ETF-Wert oben bleibt dagegen komplett im Fonds gebunden (thesaurierend) – du hast während der 10 Jahre keinen Zugriff darauf, ohne zu verkaufen. Beide Zahlen sind vereinfachte Modellrechnungen, keine Garantie. Rechne mit deinen eigenen Zahlen im <a href="garagen-renditerechner.html">Renditerechner</a>.</p>
+    </div>
+
+    <div class="fazit-box">
+      <div class="fazit-box-title">🎯 Zwischenfazit: Rechenbeispiel</div>
+      <p>Bei realistischen, konservativen Annahmen liegen Garage und ETF nach 10 Jahren <strong>überraschend nah beieinander</strong> – rund 32.000–33.000 €. Die Entscheidung fällt dann nicht über die Rendite, sondern über Cashflow, Steuervorteile und wie viel Liquidität du brauchst.</p>
     </div>
 
     <h2>Für wen eignet sich was?</h2>
