@@ -1,0 +1,45 @@
+# ============================================================
+# WICHTIGER HINWEIS: garagenkapital.de läuft auf NETLIFY, nicht
+# auf einem Apache-Server. Netlifys Server-Stack liest KEINE
+# .htaccess-Dateien – diese Datei hat auf dem aktuellen Hosting
+# keinerlei Wirkung.
+#
+# Sie liegt hier ausschließlich als Referenz/Fallback für den Fall
+# eines künftigen Umzugs auf Apache-Hosting. Die tatsächlich aktive
+# Caching-Konfiguration für Netlify steht in /_headers.
+# Kompression (Brotli/Gzip) übernimmt Netlify ohnehin automatisch,
+# ohne dass hierfür serverseitig etwas konfiguriert werden muss.
+# ============================================================
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/pdf "access plus 7 days"
+  ExpiresByType application/vnd.openxmlformats-officedocument.wordprocessingml.document "access plus 7 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType text/xml "access plus 1 hour"
+  ExpiresByType text/plain "access plus 1 hour"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(pdf|docx)$">
+    Header set Cache-Control "public, max-age=604800, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(ico|png|svg)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  Header set X-Content-Type-Options "nosniff"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json image/svg+xml text/xml application/xml
+</IfModule>
+
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css application/javascript text/javascript application/json image/svg+xml text/xml application/xml
+</IfModule>

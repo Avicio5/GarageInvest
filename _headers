@@ -1,0 +1,43 @@
+# ============================================================
+# Netlify Headers – Caching-Strategie GaragenKapital
+# Hinweis: Diese Regeln greifen NUR bei Netlify-Hosting.
+# (Netlify liest _headers direkt aus dem Publish-Verzeichnis –
+#  eine .htaccess wird von Netlifys Server-Stack ignoriert.)
+#
+# Kompression (Brotli/Gzip) läuft bei Netlify automatisch für
+# alle Text-Assets (HTML/CSS/JS/SVG) – dafür ist hier keine
+# Konfiguration nötig oder möglich.
+# ============================================================
+
+# HTML-Seiten: Inhalte werden regelmäßig aktualisiert (neue Artikel,
+# Korrekturen). Kein Long-Term-Cache, aber must-revalidate erlaubt
+# dem Browser einen schnellen 304-Check statt vollem Re-Download.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Content-Type-Options: nosniff
+
+# Favicons: ändern sich praktisch nie -> 30 Tage
+/favicon*
+  Cache-Control: public, max-age=2592000
+
+# Download-Assets (Checkliste, Mietvertrag-Muster): 7 Tage,
+# danach Revalidierung. Bewusst NICHT "immutable", da die
+# Dateinamen nicht content-gehasht sind – bei einer inhaltlichen
+# Aktualisierung unter gleichem Dateinamen soll der Browser
+# innerhalb der Cache-Zeit trotzdem irgendwann neu prüfen.
+/*.pdf
+  Cache-Control: public, max-age=604800, must-revalidate
+
+/*.docx
+  Cache-Control: public, max-age=604800, must-revalidate
+
+# Sitemap/robots: kurz cachen, wird von Crawlern regelmäßig neu geholt
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Cache-Control: public, max-age=3600
